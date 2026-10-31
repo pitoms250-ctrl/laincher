@@ -1,0 +1,200 @@
+<UserControl x:Class="Launcher.UI.Views.ModsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Foreground="{DynamicResource Brush.TextPrimary}"
+             UseLayoutRounding="True"
+             SnapsToDevicePixels="True"
+             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextRenderingMode="ClearType">
+  <UserControl.Resources>
+    <Style x:Key="Button.ModInstall" TargetType="Button" BasedOn="{StaticResource Button.Secondary}">
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding DataContext.IsModBusy, RelativeSource={RelativeSource AncestorType=ListBox}}" Value="True">
+          <Setter Property="IsEnabled" Value="False" />
+          <Setter Property="Content" Value="Обработка…" />
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+  </UserControl.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="2*" />
+      <ColumnDefinition Width="16" />
+      <ColumnDefinition Width="1*" MinWidth="240" />
+    </Grid.ColumnDefinitions>
+    <Border Grid.Column="0" Style="{StaticResource Card.Glass}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,0,0,12">
+          <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="112" /></Grid.ColumnDefinitions>
+          <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Библиотека модов" Style="{StaticResource Text.H1}" />
+            <TextBlock Text="Каталог Modrinth · названия и описания переведены на русский"
+                       Style="{StaticResource Text.Small}" Margin="0,4,0,0" TextWrapping="Wrap" />
+          </StackPanel>
+             <Image Grid.Column="1" Width="104" Height="104" HorizontalAlignment="Right"
+               Style="{StaticResource Decor.Rotate}"
+                 RenderOptions.BitmapScalingMode="HighQuality" IsHitTestVisible="False"
+                 Stretch="Uniform" SnapsToDevicePixels="True">
+            <Image.Source><BitmapImage UriSource="pack://application:,,,/imge/deco-chest.png" DecodePixelWidth="160" /></Image.Source>
+          </Image>
+        </Grid>
+        <Grid Grid.Row="1">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+          <Grid Grid.Row="0" Margin="0,0,0,8">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+            <TextBox Style="{StaticResource TextBox.Themed}" Tag="Поиск модов на Modrinth"
+                     Text="{Binding ModQuery, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,8,0">
+              <TextBox.InputBindings><KeyBinding Key="Enter" Command="{Binding SearchModsCommand}" /></TextBox.InputBindings>
+            </TextBox>
+            <Button Grid.Column="1" Style="{StaticResource Button.Primary}" Content="Найти"
+                    Command="{Binding SearchModsCommand}" />
+          </Grid>
+          <WrapPanel Grid.Row="1" Margin="0,0,0,8">
+            <ComboBox Style="{StaticResource ComboBox.Themed}" MinWidth="112" Margin="0,0,8,0"
+                      ItemsSource="{Binding ModLoaders}" SelectedItem="{Binding ModLoader}" ToolTip="Загрузчик" />
+            <ComboBox Style="{StaticResource ComboBox.Themed}" MinWidth="128" Margin="0,0,8,0"
+                      ItemsSource="{Binding ModSorts}" SelectedIndex="{Binding ModSortIndex}" ToolTip="Сортировка" />
+            <CheckBox Style="{StaticResource CheckBox.Themed}" IsChecked="{Binding ModForVersion}"
+                      VerticalAlignment="Center">
+              <TextBlock>
+                <Run Text="Только для " />
+                <Run Text="{Binding SelectedVersionLabel, Mode=OneWay}" Foreground="{DynamicResource Brush.Accent400}" />
+              </TextBlock>
+            </CheckBox>
+          </WrapPanel>
+          <DockPanel Grid.Row="2" Margin="0,0,0,8">
+            <ProgressBar DockPanel.Dock="Right" Width="72" Margin="8,0,0,0"
+                         Style="{StaticResource ProgressBar.Themed}" IsIndeterminate="{Binding IsModBusy}" />
+            <TextBlock Text="{Binding ModStatus}" Style="{StaticResource Text.Small}"
+                       TextWrapping="Wrap" TextTrimming="CharacterEllipsis" MaxHeight="38" />
+          </DockPanel>
+          <Grid Grid.Row="3">
+            <ListBox ItemsSource="{Binding ModResults}" Background="Transparent" BorderThickness="0"
+                     Foreground="{DynamicResource Brush.TextPrimary}" ItemContainerStyle="{StaticResource PlainItem}"
+                     VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"
+                     ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+              <ListBox.ItemTemplate>
+                <DataTemplate>
+                  <Border Margin="0,0,0,8" Padding="12" Background="{DynamicResource Brush.Surface}"
+                          BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1"
+                          CornerRadius="{DynamicResource Radius.Medium}">
+                    <Grid>
+                      <Grid.ColumnDefinitions><ColumnDefinition Width="48" /><ColumnDefinition Width="12" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                      <Border Width="48" Height="48" CornerRadius="{DynamicResource Radius.Small}"
+                              Background="{DynamicResource Brush.Bg2}" ClipToBounds="True">
+                        <Image Source="{Binding IconUrl}" Stretch="UniformToFill"
+                               RenderOptions.BitmapScalingMode="HighQuality" />
+                      </Border>
+                      <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Title}" Style="{StaticResource Text.H3}"
+                                   TextTrimming="CharacterEllipsis" />
+                        <TextBlock FontSize="{DynamicResource Type.Caption}" Foreground="{DynamicResource Brush.TextSecondary}"
+                                   Margin="0,2,0,3">
+                          <Run Text="{Binding Author, Mode=OneWay}" />
+                          <Run Text=" · " />
+                          <Run Text="{Binding Downloads, Mode=OneWay, StringFormat={}{0:N0}}" />
+                        </TextBlock>
+                        <TextBlock Text="{Binding Description}" Style="{StaticResource Text.Small}"
+                                   TextWrapping="Wrap" TextTrimming="CharacterEllipsis" MaxHeight="36" />
+                      </StackPanel>
+                            <Button Grid.Column="3" Style="{StaticResource Button.ModInstall}"
+                              MinHeight="32" Padding="8,4" Content="Установить" VerticalAlignment="Center"
+                              Command="{Binding DataContext.InstallModCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                              CommandParameter="{Binding}" />
+                    </Grid>
+                  </Border>
+                </DataTemplate>
+              </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+              <StackPanel.Style>
+                <Style TargetType="StackPanel">
+                  <Setter Property="Visibility" Value="Collapsed" />
+                  <Style.Triggers>
+                    <MultiDataTrigger>
+                      <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding ModResults.Count}" Value="0" />
+                        <Condition Binding="{Binding IsModBusy}" Value="False" />
+                      </MultiDataTrigger.Conditions>
+                      <Setter Property="Visibility" Value="Visible" />
+                    </MultiDataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </StackPanel.Style>
+              <Image Width="96" Height="96" Style="{StaticResource Decor.Float.Medium}"
+                RenderOptions.BitmapScalingMode="HighQuality"
+                     IsHitTestVisible="False" Stretch="Uniform" SnapsToDevicePixels="True">
+                <Image.Source><BitmapImage UriSource="pack://application:,,,/imge/deco-empty-box.png" DecodePixelWidth="144" /></Image.Source>
+              </Image>
+              <TextBlock Text="Найдите моды для своей версии" Style="{StaticResource Text.H3}"
+                         HorizontalAlignment="Center" TextWrapping="Wrap" />
+              <TextBlock Text="Выберите загрузчик и начните поиск." Style="{StaticResource Text.Small}"
+                         HorizontalAlignment="Center" Margin="0,4,0,0" />
+            </StackPanel>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Border>
+    <Border Grid.Column="2" Style="{StaticResource Card.Glass}" Padding="16">
+      <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+          <TextBlock Text="Мои моды" Style="{StaticResource Text.H2}" />
+          <TextBlock Text="Файлы в папке mods" Style="{StaticResource Text.Small}" Margin="0,4,0,12" />
+          <Button Style="{StaticResource Button.Primary}" Content="Добавить .jar"
+                  Command="{Binding AddOwnModCommand}" />
+          <UniformGrid Columns="2" Margin="0,8,0,12">
+            <Button Style="{StaticResource Button.Secondary}" Content="Папка" Margin="0,0,4,0"
+                    Command="{Binding OpenModsFolderCommand}" />
+            <Button Style="{StaticResource Button.Secondary}" Content="Обновить" Margin="4,0,0,0"
+                    Command="{Binding RefreshModsCommand}" />
+          </UniformGrid>
+        </StackPanel>
+        <TextBlock DockPanel.Dock="Bottom" Style="{StaticResource Text.Caption}" TextWrapping="Wrap"
+                   Margin="0,10,0,0"
+                   Text="Автоустановка Forge/Fabric пока не реализована: моды заработают, если загрузчик уже установлен." />
+        <Grid>
+          <ListBox ItemsSource="{Binding ModFiles}" Background="Transparent" BorderThickness="0"
+                   Foreground="{DynamicResource Brush.TextPrimary}" ItemContainerStyle="{StaticResource PlainItem}"
+                   VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"
+                   ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <DockPanel Margin="0,0,0,6">
+                  <Button DockPanel.Dock="Right" Style="{StaticResource Button.Danger}" MinHeight="32"
+                          Padding="8,4" Content="Удалить" ToolTip="Удалить мод"
+                          Command="{Binding DataContext.RemoveModCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                          CommandParameter="{Binding}" />
+                  <TextBlock Text="{Binding}" FontFamily="{DynamicResource Font.Mono}"
+                             FontSize="{DynamicResource Type.Caption}" TextTrimming="CharacterEllipsis"
+                             VerticalAlignment="Center" Margin="0,0,8,0" />
+                </DockPanel>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+          <TextBlock Text="Установленных модов пока нет" HorizontalAlignment="Center"
+                     VerticalAlignment="Center" IsHitTestVisible="False">
+            <TextBlock.Style>
+              <Style TargetType="TextBlock" BasedOn="{StaticResource Text.Small}">
+                <Setter Property="Visibility" Value="Collapsed" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding ModFiles.Count}" Value="0">
+                    <Setter Property="Visibility" Value="Visible" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </TextBlock.Style>
+          </TextBlock>
+        </Grid>
+      </DockPanel>
+    </Border>
+  </Grid>
+</UserControl>

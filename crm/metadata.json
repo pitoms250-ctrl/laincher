@@ -1,0 +1,6 @@
+{
+  "name": "F Launcher · CRM",
+  "description": "Панель управления F Launcher: связь с базой Firestore, Google Auth, двухфакторная аутентификация, ЗБТ-ключи, игроки и блокировки.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

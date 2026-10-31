@@ -1,0 +1,86 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function hasStaffRole(roles) {
+      let staffPath = /databases/$(database)/documents/staff/$(request.auth.uid);
+      return signedIn()
+        && request.auth.token.firebase.sign_in_provider == 'google.com'
+        && request.auth.token.firebase.sign_in_second_factor != null
+        && exists(staffPath)
+        && get(staffPath).data.email == request.auth.token.email
+        && get(staffPath).data.role in roles;
+    }
+
+    function isOwner() {
+      return hasStaffRole(['owner']);
+    }
+
+    function isSupportOrOwner() {
+      return hasStaffRole(['owner', 'support']);
+    }
+
+    match /staff/{uid} {
+      allow get: if signedIn() && request.auth.uid == uid;
+      allow list: if isOwner();
+      allow write: if false;
+    }
+
+    match /staffInvites/{email} {
+      allow read: if isOwner();
+      allow write: if false;
+    }
+
+    match /zbtCampaigns/{id} {
+      allow read: if isSupportOrOwner();
+      allow write: if false;
+    }
+
+    match /zbtKeys/{id} {
+      allow read: if isSupportOrOwner();
+      allow write: if false;
+    }
+
+    match /players/{uid} {
+      allow read: if isSupportOrOwner();
+      allow write: if false;
+    }
+
+    match /zbtActivations/{uid} {
+      allow read: if isSupportOrOwner() || (signedIn() && request.auth.uid == uid);
+      allow write: if false;
+    }
+
+    match /errorGroups/{fingerprint} {
+      allow read: if isSupportOrOwner();
+      allow write: if false;
+    }
+
+    match /errorReports/{reportId} {
+      allow read: if isOwner();
+      allow write: if false;
+    }
+
+    match /announcements/{id} {
+      allow read: if hasStaffRole(['owner', 'support', 'marketing']);
+      allow write: if false;
+    }
+
+    match /dailyAnalytics/{date} {
+      allow read: if hasStaffRole(['owner', 'support', 'marketing']);
+      allow write: if false;
+    }
+
+    match /auditLog/{id} {
+      allow read: if isOwner();
+      allow write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

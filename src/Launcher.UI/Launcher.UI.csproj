@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>FLauncher</AssemblyName>
+    <RootNamespace>Launcher.UI</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Launcher.Services\Launcher.Services.csproj" />
+    <ProjectReference Include="..\Launcher.Infrastructure\Launcher.Infrastructure.csproj" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <Resource Include="Assets\*.jpg" />
+    <Resource Include="Assets\*.png" />
+    <Resource Include="Assets\Shop\**\*.png" />
+    <Resource Include="Assets\slides\*.jpg" />
+    <Resource Include="imge\*.png" />
+    <Resource Include="Fonts\*.ttf" />
+    <Content Include="Fonts\*-OFL.txt" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\welcome.mp3" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

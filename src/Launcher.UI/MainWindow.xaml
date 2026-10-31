@@ -1,0 +1,245 @@
+<Window x:Class="Launcher.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:Launcher.UI.Views"
+        Title="F Launcher" Width="1200" Height="740" MinWidth="960" MinHeight="600"
+        WindowStartupLocation="CenterScreen" FontFamily="{DynamicResource Font.Body}" FontSize="{DynamicResource Type.Body}" Foreground="{DynamicResource Brush.TextPrimary}"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent" ResizeMode="CanResize"
+        UseLayoutRounding="True" SnapsToDevicePixels="True"
+        TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="ClearType"
+        RenderOptions.BitmapScalingMode="HighQuality">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" CornerRadius="0" GlassFrameThickness="0" ResizeBorderThickness="8" UseAeroCaptionButtons="False"/>
+    </WindowChrome.WindowChrome>
+
+    <Border Style="{StaticResource Frame}" Margin="8" Padding="14">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{DynamicResource Color.Bg0}" Offset="0"/>
+                <GradientStop Color="{DynamicResource Color.Bg1}" Offset="0.55"/>
+                <GradientStop Color="{DynamicResource Color.Bg2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{DynamicResource Layout.SidebarWidth}"/>
+                <ColumnDefinition Width="{DynamicResource Layout.CardGap}"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- HEADER -->
+            <Grid Grid.ColumnSpan="3" Margin="0,0,0,12" Background="Transparent" MouseLeftButtonDown="Header_MouseDown">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border Width="48" Height="48" CornerRadius="12" BorderBrush="{DynamicResource Brush.Accent400}" BorderThickness="1.5" ClipToBounds="True">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="{DynamicResource Color.Accent500}" Offset="0"/>
+                                    <GradientStop Color="{DynamicResource Color.Bg2}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Image Source="/imge/c8d995ff-a413-46dc-8cd7-9ac3c465d208.jpg" Stretch="UniformToFill"/>
+                        </Border>
+                        <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="F Launcher" FontSize="22" FontWeight="Bold"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Ellipse Width="9" Height="9" Fill="{DynamicResource Brush.Success}" Margin="0,0,8,0"/>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Онлайн" FontSize="{DynamicResource Type.Caption}" FontWeight="SemiBold"/>
+                            <TextBlock FontSize="{DynamicResource Type.Caption}" Foreground="{DynamicResource Brush.TextSecondary}"><Run Text="Игроков на серверах: "/><Run Text="{Binding TotalPlayers, Mode=OneWay}"/></TextBlock>
+                        </StackPanel>
+                        <Button Style="{StaticResource PillButton}" Padding="10,6" Margin="14,0,0,0" Height="40"
+                                Command="{Binding OpenCoinTopUpCommand}" ToolTip="Баланс FL Coins · открыть пополнение">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="FL" FontWeight="Bold" Foreground="{DynamicResource Brush.Accent400}" Margin="0,0,6,0" />
+                                <TextBlock Text="{Binding WalletCoins, StringFormat={}{0:N0}}" FontWeight="SemiBold" />
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource IconButton}" Content="&#xE72C;" Margin="14,0,10,0" Command="{Binding RefreshCommand}" ToolTip="Обновить"/>
+                        <Button Style="{StaticResource PillButton}" Padding="12,6" Margin="0,0,10,0" Height="44"
+                                Command="{Binding AccountCommand}" ToolTip="{Binding AccountLabel}">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <UniformGrid Rows="2" Columns="2" Width="16" Height="16" Margin="0,0,8,0">
+                                    <Rectangle Fill="#F25022" Margin="0,0,1,1"/>
+                                    <Rectangle Fill="#7FBA00" Margin="1,0,0,1"/>
+                                    <Rectangle Fill="#00A4EF" Margin="0,1,1,0"/>
+                                    <Rectangle Fill="#FFB900" Margin="1,1,0,0"/>
+                                </UniformGrid>
+                                <TextBlock Text="{Binding AccountActionLabel}" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Border CornerRadius="12" BorderBrush="#4457F287" BorderThickness="1" Background="#33000000" Padding="8,4" Height="44" ToolTip="{Binding AccountLabel}">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="32" Height="32" CornerRadius="8" Background="{DynamicResource Brush.Accent600}">
+                                    <TextBlock Text="{Binding AvatarLetter}" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <StackPanel Margin="10,0,6,0" VerticalAlignment="Center">
+                                    <TextBox Style="{StaticResource GhostTextBox}" Width="120" Text="{Binding Nickname, UpdateSourceTrigger=LostFocus}" FontSize="13"/>
+                                    <TextBlock Text="{Binding AccountLabel}" FontSize="{DynamicResource Type.Caption}" Foreground="{DynamicResource Brush.TextSecondary}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Button Style="{StaticResource CaptionButton}" Content="&#xE921;" ToolTip="Свернуть" Click="Min_Click"/>
+                        <Button Style="{StaticResource CaptionButton}" Content="&#xE922;" ToolTip="Развернуть" Click="Max_Click"/>
+                        <Button Style="{StaticResource CloseButton}" Content="&#xE8BB;" ToolTip="Закрыть" Click="Close_Click"/>
+                    </StackPanel>
+                </Grid>
+
+                <Border Grid.Row="1" Margin="0,10,0,0" Padding="14,10" CornerRadius="14"
+                Background="#0F2432" BorderBrush="#2D4F67" BorderThickness="1"
+                Visibility="{Binding IsAuthStatusVisible, Converter={StaticResource BoolToVis}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="Microsoft вход" FontSize="12" Foreground="#A7C4B5" Margin="0,0,0,4"/>
+                            <TextBlock Text="{Binding AuthStatusText}" FontWeight="SemiBold" Foreground="#DDEFFF" TextWrapping="Wrap"/>
+                            <TextBlock Margin="0,8,0,0" Text="{Binding AuthCodeText, StringFormat=Код: {0}}" FontSize="15" FontWeight="Bold" Foreground="#8FE3FF"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="12,0,0,0" VerticalAlignment="Center">
+                            <Button Style="{StaticResource Button.Secondary}" Padding="10,5"
+                      Content="Копировать" Click="AuthCopyCode_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- SIDEBAR: рабочая навигация -->
+            <Border Grid.Row="1" Style="{StaticResource Card.Glass}" Padding="8">
+                <StackPanel>
+                    <RadioButton Style="{StaticResource NavRadio}" Command="{Binding NavigateCommand}" CommandParameter="Play"
+                       IsChecked="{Binding CurrentPage, Converter={StaticResource Eq}, ConverterParameter=Play, Mode=OneWay}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE768;" Foreground="{DynamicResource Brush.Accent400}" FontSize="16" Width="26"/>
+                            <TextBlock Text="Играть" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource NavRadio}" Command="{Binding NavigateCommand}" CommandParameter="Versions"
+                       IsChecked="{Binding CurrentPage, Converter={StaticResource Eq}, ConverterParameter=Versions, Mode=OneWay}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8F1;" Foreground="{DynamicResource Brush.TextSecondary}" FontSize="16" Width="26"/>
+                            <TextBlock Text="Версии"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource NavRadio}" Command="{Binding NavigateCommand}" CommandParameter="News"
+                       IsChecked="{Binding CurrentPage, Converter={StaticResource Eq}, ConverterParameter=News, Mode=OneWay}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8A5;" Foreground="{DynamicResource Brush.TextSecondary}" FontSize="16" Width="26"/>
+                            <TextBlock Text="Новости"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource NavRadio}" Command="{Binding NavigateCommand}" CommandParameter="Online"
+                       IsChecked="{Binding CurrentPage, Converter={StaticResource Eq}, ConverterParameter=Online, Mode=OneWay}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE774;" Foreground="{DynamicResource Brush.TextSecondary}" FontSize="16" Width="26"/>
+                            <TextBlock Text="Онлайн"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource NavRadio}" Command="{Binding NavigateCommand}" CommandParameter="Skins"
+                       IsChecked="{Binding CurrentPage, Converter={StaticResource Eq}, ConverterParameter=Skins, Mode=OneWay}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE77B;" Foreground="{DynamicResource Brush.TextSecondary}" FontSize="16" Width="26"/>
+                            <TextBlock Text="Скины"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource NavRadio}" Command="{Binding NavigateCommand}" CommandParameter="Mods"
+                       IsChecked="{Binding CurrentPage, Converter={StaticResource Eq}, ConverterParameter=Mods, Mode=OneWay}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE7B8;" Foreground="{DynamicResource Brush.TextSecondary}" FontSize="16" Width="26"/>
+                            <TextBlock Text="Моды"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource NavRadio}" Command="{Binding NavigateCommand}" CommandParameter="Shop"
+                       IsChecked="{Binding CurrentPage, Converter={StaticResource Eq}, ConverterParameter=Shop, Mode=OneWay}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE719;" Foreground="{DynamicResource Brush.Accent400}" FontSize="16" Width="26"/>
+                            <TextBlock Text="Магазин"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource NavRadio}" Command="{Binding NavigateCommand}" CommandParameter="Settings"
+                       IsChecked="{Binding CurrentPage, Converter={StaticResource Eq}, ConverterParameter=Settings, Mode=OneWay}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE713;" Foreground="{DynamicResource Brush.TextSecondary}" FontSize="16" Width="26"/>
+                            <TextBlock Text="Настройки"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource NavRadio}" Command="{Binding NavigateCommand}" CommandParameter="Profile"
+                       IsChecked="{Binding CurrentPage, Converter={StaticResource Eq}, ConverterParameter=Profile, Mode=OneWay}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE77B;" Foreground="{DynamicResource Brush.TextSecondary}" FontSize="16" Width="26"/>
+                            <TextBlock Text="Профиль"/>
+                        </StackPanel>
+                    </RadioButton>
+                </StackPanel>
+            </Border>
+            <TextBlock Grid.Row="2" Text="F Launcher v1.0.0" FontSize="{DynamicResource Type.Caption}" Foreground="{DynamicResource Brush.TextTertiary}" VerticalAlignment="Center" Margin="8,10,0,0"/>
+
+            <!-- СТРАНИЦЫ -->
+            <Grid Grid.Row="1" Grid.Column="2">
+                <v:PlayView     Visibility="{Binding CurrentPage, Converter={StaticResource PageVis}, ConverterParameter=Play}"/>
+                <v:VersionsView Visibility="{Binding CurrentPage, Converter={StaticResource PageVis}, ConverterParameter=Versions}"/>
+                <v:NewsView     Visibility="{Binding CurrentPage, Converter={StaticResource PageVis}, ConverterParameter=News}"/>
+                <v:OnlineView   Visibility="{Binding CurrentPage, Converter={StaticResource PageVis}, ConverterParameter=Online}"/>
+                <v:SkinsView    Visibility="{Binding CurrentPage, Converter={StaticResource PageVis}, ConverterParameter=Skins}"/>
+                <v:ModsView     Visibility="{Binding CurrentPage, Converter={StaticResource PageVis}, ConverterParameter=Mods}"/>
+                <v:ShopView x:Name="ShopPage" Visibility="{Binding CurrentPage, Converter={StaticResource PageVis}, ConverterParameter=Shop}"/>
+                <v:SettingsView Visibility="{Binding CurrentPage, Converter={StaticResource PageVis}, ConverterParameter=Settings}"/>
+                <v:ProfileView x:Name="ProfilePage" Visibility="{Binding CurrentPage, Converter={StaticResource PageVis}, ConverterParameter=Profile}"/>
+            </Grid>
+
+            <!-- НИЖНЯЯ ПАНЕЛЬ -->
+            <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource Card.Glass}" Padding="12,8" Margin="0,12,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding ProgressText}" FontSize="{DynamicResource Type.Caption}" Foreground="{DynamicResource Brush.TextSecondary}"/>
+                            <TextBlock Text="{Binding LastLogLine}" FontSize="{DynamicResource Type.Caption}" Foreground="{DynamicResource Brush.TextSecondary}" TextTrimming="CharacterEllipsis" Margin="0,0,12,0"/>
+                        </DockPanel>
+                        <ProgressBar Value="{Binding ProgressValue}" Maximum="1" MinHeight="6" Margin="0,6,0,0"
+                         Style="{StaticResource ProgressBar.Themed}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button Style="{StaticResource PillButton}" Margin="12,0,0,0" Padding="12,6" Click="Telegram_Click" ToolTip="Открыть Telegram-сообщество">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE8F2;" Margin="0,2,6,0"/>
+                                <TextBlock Text="Telegram"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource PillButton}" Margin="8,0,0,0" Padding="12,6" Click="Support_Click" ToolTip="Связаться с поддержкой">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xE715;" Margin="0,2,6,0"/>
+                                <TextBlock Text="Поддержка"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            </Grid>
+            <v:ZbtGateOverlay Panel.ZIndex="200"
+                              Visibility="{Binding IsZbtLocked, Converter={StaticResource BoolToVis}}"/>
+        </Grid>
+    </Border>
+</Window>

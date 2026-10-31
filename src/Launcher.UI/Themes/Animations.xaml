@@ -1,0 +1,128 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Duration x:Key="Animation.Fast">0:0:0.12</Duration>
+  <Duration x:Key="Animation.Base">0:0:0.2</Duration>
+  <Duration x:Key="Animation.Slow">0:0:0.32</Duration>
+  <Duration x:Key="Animation.Page">0:0:0.4</Duration>
+  <Duration x:Key="Animation.Decor.FloatHalfCycle">0:0:3.5</Duration>
+  <Duration x:Key="Animation.Decor.FloatMediumHalfCycle">0:0:4</Duration>
+  <Duration x:Key="Animation.Decor.FloatSmallHalfCycle">0:0:3</Duration>
+  <Duration x:Key="Animation.Decor.RotateHalfCycle">0:0:4.5</Duration>
+  <Duration x:Key="Animation.Decor.GlowHalfCycle">0:0:2.5</Duration>
+  <sys:Double x:Key="Motion.Decor.OffsetNegative">-8</sys:Double>
+  <sys:Double x:Key="Motion.Decor.OffsetPositive">8</sys:Double>
+  <sys:Double x:Key="Motion.Decor.OffsetMediumNegative">-6</sys:Double>
+  <sys:Double x:Key="Motion.Decor.OffsetMediumPositive">6</sys:Double>
+  <sys:Double x:Key="Motion.Decor.OffsetSmallNegative">-2</sys:Double>
+  <sys:Double x:Key="Motion.Decor.OffsetSmallPositive">2</sys:Double>
+  <sys:Double x:Key="Motion.Decor.RotationNegative">-2</sys:Double>
+  <sys:Double x:Key="Motion.Decor.RotationPositive">2</sys:Double>
+  <sys:Double x:Key="Motion.Glow.Low">20</sys:Double>
+  <sys:Double x:Key="Motion.Glow.High">40</sys:Double>
+  <QuinticEase x:Key="Easing.EaseOut" EasingMode="EaseOut" />
+  <ExponentialEase x:Key="Easing.ExponentialOut" EasingMode="EaseOut" />
+
+  <Style x:Key="Decor.Float.Large" TargetType="Image">
+    <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+    <Setter Property="RenderTransform"><Setter.Value><TranslateTransform /></Setter.Value></Setter>
+    <Style.Triggers>
+      <Trigger Property="IsVisible" Value="True">
+        <Trigger.EnterActions>
+          <BeginStoryboard Name="FloatLarge">
+            <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+              <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                               From="{StaticResource Motion.Decor.OffsetNegative}"
+                               To="{StaticResource Motion.Decor.OffsetPositive}"
+                               Duration="{StaticResource Animation.Decor.FloatHalfCycle}" />
+            </Storyboard>
+          </BeginStoryboard>
+        </Trigger.EnterActions>
+        <Trigger.ExitActions><StopStoryboard BeginStoryboardName="FloatLarge" /></Trigger.ExitActions>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <Style x:Key="Decor.Float.Medium" TargetType="Image">
+    <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+    <Setter Property="RenderTransform"><Setter.Value><TranslateTransform /></Setter.Value></Setter>
+    <Style.Triggers>
+      <Trigger Property="IsVisible" Value="True">
+        <Trigger.EnterActions>
+          <BeginStoryboard Name="FloatMedium">
+            <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+              <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                               From="{StaticResource Motion.Decor.OffsetMediumNegative}"
+                               To="{StaticResource Motion.Decor.OffsetMediumPositive}"
+                               Duration="{StaticResource Animation.Decor.FloatMediumHalfCycle}" />
+            </Storyboard>
+          </BeginStoryboard>
+        </Trigger.EnterActions>
+        <Trigger.ExitActions><StopStoryboard BeginStoryboardName="FloatMedium" /></Trigger.ExitActions>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <Style x:Key="Decor.Float.Small" TargetType="Image">
+    <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+    <Setter Property="RenderTransform"><Setter.Value><TranslateTransform /></Setter.Value></Setter>
+    <Style.Triggers>
+      <Trigger Property="IsVisible" Value="True">
+        <Trigger.EnterActions>
+          <BeginStoryboard Name="FloatSmall">
+            <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+              <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                               From="{StaticResource Motion.Decor.OffsetSmallNegative}"
+                               To="{StaticResource Motion.Decor.OffsetSmallPositive}"
+                               Duration="{StaticResource Animation.Decor.FloatSmallHalfCycle}" />
+            </Storyboard>
+          </BeginStoryboard>
+        </Trigger.EnterActions>
+        <Trigger.ExitActions><StopStoryboard BeginStoryboardName="FloatSmall" /></Trigger.ExitActions>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <Style x:Key="Decor.Rotate" TargetType="Image">
+    <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+    <Setter Property="RenderTransform"><Setter.Value><RotateTransform /></Setter.Value></Setter>
+    <Style.Triggers>
+      <Trigger Property="IsVisible" Value="True">
+        <Trigger.EnterActions>
+          <BeginStoryboard Name="RotateDecor">
+            <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+              <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                               From="{StaticResource Motion.Decor.RotationNegative}"
+                               To="{StaticResource Motion.Decor.RotationPositive}"
+                               Duration="{StaticResource Animation.Decor.RotateHalfCycle}" />
+            </Storyboard>
+          </BeginStoryboard>
+        </Trigger.EnterActions>
+        <Trigger.ExitActions><StopStoryboard BeginStoryboardName="RotateDecor" /></Trigger.ExitActions>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <Style x:Key="Decor.Glow" TargetType="Image">
+    <Setter Property="Effect">
+      <Setter.Value>
+        <DropShadowEffect Color="{DynamicResource Color.Accent400}" BlurRadius="{DynamicResource Motion.Glow.Low}"
+                          ShadowDepth="0" Opacity="0.45" />
+      </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+      <Trigger Property="IsVisible" Value="True">
+        <Trigger.EnterActions>
+          <BeginStoryboard Name="GlowDecor">
+            <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+              <DoubleAnimation Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.BlurRadius)"
+                               From="{StaticResource Motion.Glow.Low}" To="{StaticResource Motion.Glow.High}"
+                               Duration="{StaticResource Animation.Decor.GlowHalfCycle}" />
+            </Storyboard>
+          </BeginStoryboard>
+        </Trigger.EnterActions>
+        <Trigger.ExitActions><StopStoryboard BeginStoryboardName="GlowDecor" /></Trigger.ExitActions>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+</ResourceDictionary>

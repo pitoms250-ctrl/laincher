@@ -1,0 +1,41 @@
+<Window x:Class="Launcher.UI.Views.SupportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Поддержка F Launcher" Width="620" Height="700" MinWidth="540" MinHeight="620"
+        WindowStartupLocation="CenterOwner" WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        ResizeMode="CanResize" FontFamily="Inter, Montserrat, Segoe UI" Foreground="White" UseLayoutRounding="True">
+  <Border Margin="8" CornerRadius="18" BorderBrush="#6639FF14" BorderThickness="1.5" Padding="22" MouseLeftButtonDown="Drag">
+    <Border.Background>
+      <LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#03140E" Offset="0"/><GradientStop Color="#0B3D2E" Offset="1"/></LinearGradientBrush>
+    </Border.Background>
+    <Grid>
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+      <StackPanel Grid.Row="0" Margin="0,0,0,16">
+        <TextBlock Text="Связаться с поддержкой" FontSize="22" FontWeight="Bold"/>
+        <TextBlock Text="Диагностика заполнена автоматически. Опишите, что произошло, и откройте письмо." Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+      </StackPanel>
+      <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+          <TextBlock Text="Почта поддержки" FontWeight="SemiBold"/>
+          <TextBlock Text="furry.launcher@gmail.com" Foreground="#7CFFCB" Margin="0,3,0,12"/>
+          <TextBlock Text="Версия Windows" Foreground="{StaticResource MutedBrush}"/>
+          <TextBox x:Name="WindowsVersion" Style="{StaticResource InputBox}" IsReadOnly="True" Margin="0,3,0,10"/>
+          <TextBlock Text="Оперативная память" Foreground="{StaticResource MutedBrush}"/>
+          <TextBox x:Name="Memory" Style="{StaticResource InputBox}" IsReadOnly="True" Margin="0,3,0,10"/>
+          <TextBlock Text="Процессор" Foreground="{StaticResource MutedBrush}"/>
+          <TextBox x:Name="Processor" Style="{StaticResource InputBox}" IsReadOnly="True" Margin="0,3,0,10"/>
+          <TextBlock Text="Видеокарта" Foreground="{StaticResource MutedBrush}"/>
+          <TextBox x:Name="Graphics" Style="{StaticResource InputBox}" IsReadOnly="True" Margin="0,3,0,14"/>
+          <TextBlock Text="Опишите проблему" FontWeight="SemiBold"/>
+          <TextBox x:Name="Issue" Style="{StaticResource InputBox}" MinHeight="120" MaxHeight="220" AcceptsReturn="True"
+                   TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" VerticalContentAlignment="Top" Margin="0,6,0,8"/>
+          <TextBlock x:Name="ValidationMessage" Foreground="#FFD54F" TextWrapping="Wrap"/>
+        </StackPanel>
+      </ScrollViewer>
+      <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,14,0,0">
+        <Button Style="{StaticResource OutlineButton}" Content="Закрыть" Click="Close_Click"/>
+        <Button Style="{StaticResource PlayButton}" Content="Открыть письмо" FontSize="14" Height="40" Padding="18,0" Margin="10,0,0,0" Click="Send_Click"/>
+      </StackPanel>
+    </Grid>
+  </Border>
+</Window>

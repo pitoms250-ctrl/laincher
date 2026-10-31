@@ -1,0 +1,146 @@
+<UserControl x:Class="Launcher.UI.Views.VersionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Foreground="{DynamicResource Brush.TextPrimary}"
+             UseLayoutRounding="True"
+             SnapsToDevicePixels="True"
+             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextRenderingMode="ClearType">
+  <UserControl.Resources>
+    <Style x:Key="FilterChip" TargetType="CheckBox" BasedOn="{StaticResource CheckBox.Themed}">
+      <Setter Property="Padding" Value="12,6" />
+      <Setter Property="Margin" Value="0,0,8,0" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="CheckBox">
+            <Border x:Name="Chip" Background="{DynamicResource Brush.Surface}"
+                    BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1"
+                    CornerRadius="{DynamicResource Radius.Pill}" Padding="{TemplateBinding Padding}">
+              <ContentPresenter VerticalAlignment="Center" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Chip" Property="BorderBrush" Value="{DynamicResource Brush.BorderStrong}" />
+              </Trigger>
+              <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="Chip" Property="Background" Value="{DynamicResource Brush.SurfaceActive}" />
+                <Setter TargetName="Chip" Property="BorderBrush" Value="{DynamicResource Brush.Accent400}" />
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Chip" Property="Opacity" Value="0.45" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </UserControl.Resources>
+  <Border Style="{StaticResource Card.Glass}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Grid Grid.Row="0" Margin="0,0,0,16">
+        <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="120" /></Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Text="Версии Minecraft" Style="{StaticResource Text.H1}" />
+          <TextBlock Text="Выберите стабильную, тестовую или архивную версию."
+                     Style="{StaticResource Text.Small}" Margin="0,4,0,0" />
+        </StackPanel>
+         <Image Grid.Column="1" Width="112" Height="112" HorizontalAlignment="Right"
+           Style="{StaticResource Decor.Rotate}"
+               RenderOptions.BitmapScalingMode="HighQuality" IsHitTestVisible="False"
+               Stretch="Uniform" SnapsToDevicePixels="True">
+          <Image.Source><BitmapImage UriSource="pack://application:,,,/imge/deco-tools.png" DecodePixelWidth="180" /></Image.Source>
+        </Image>
+      </Grid>
+      <Grid Grid.Row="1" Margin="0,0,0,12">
+        <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+        <TextBox Style="{StaticResource TextBox.Themed}"
+                 Tag="Поиск версии"
+                 Text="{Binding VersionSearch, UpdateSourceTrigger=PropertyChanged}"
+                 Margin="0,0,12,0" />
+        <Button Grid.Column="1" Style="{StaticResource Button.Primary}"
+                Content="Скачать выбранную" Command="{Binding InstallOnlyCommand}" />
+      </Grid>
+      <WrapPanel Grid.Row="2" Margin="0,0,0,12">
+        <Border Style="{StaticResource Badge}" Margin="0,0,8,0">
+          <TextBlock Text="Release" Foreground="{DynamicResource Brush.Accent400}" />
+        </Border>
+        <CheckBox Style="{StaticResource FilterChip}" IsChecked="{Binding ShowSnapshots}" Content="Snapshot" />
+        <CheckBox Style="{StaticResource FilterChip}" IsChecked="{Binding ShowOld}" Content="Beta + Alpha" />
+      </WrapPanel>
+      <Grid Grid.Row="3">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Margin="12,0,12,8">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1.2*" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <TextBlock Text="Версия" Style="{StaticResource Text.Caption}" />
+          <TextBlock Grid.Column="1" Text="Тип" Style="{StaticResource Text.Caption}" />
+          <TextBlock Grid.Column="2" Text="Дата выхода" Style="{StaticResource Text.Caption}" />
+        </Grid>
+        <Grid Grid.Row="1">
+          <ListBox ItemsSource="{Binding VersionList}" SelectedItem="{Binding SelectedVersion}"
+                   Style="{StaticResource ListBox.Themed}"
+                   ItemContainerStyle="{StaticResource ListBoxItem.Themed}">
+            <ListBox.ItemsPanel>
+              <ItemsPanelTemplate><VirtualizingStackPanel /></ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <Grid MinHeight="44">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1.2*" />
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="Auto" />
+                  </Grid.ColumnDefinitions>
+                  <TextBlock Text="{Binding Id}" FontFamily="{DynamicResource Font.Mono}"
+                             VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+                  <TextBlock Grid.Column="1" Text="{Binding Type}" Foreground="{DynamicResource Brush.Accent400}"
+                             VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+                  <TextBlock Grid.Column="2" Text="{Binding ReleaseDate}" Style="{StaticResource Text.Small}"
+                             VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+                  <Button Grid.Column="3" Style="{StaticResource Button.Secondary}" MinHeight="32"
+                          Padding="12,4" Content="Выбрать"
+                          Command="{Binding DataContext.PickVersionCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                          CommandParameter="{Binding}" />
+                </Grid>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+          <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">
+            <StackPanel.Style>
+              <Style TargetType="StackPanel">
+                <Setter Property="Visibility" Value="Collapsed" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding VersionList.Count}" Value="0">
+                    <Setter Property="Visibility" Value="Visible" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </StackPanel.Style>
+                 <Image Width="112" Height="112" Style="{StaticResource Decor.Float.Medium}"
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   IsHitTestVisible="False" Stretch="Uniform" SnapsToDevicePixels="True">
+              <Image.Source><BitmapImage UriSource="pack://application:,,,/imge/deco-empty-box.png" DecodePixelWidth="180" /></Image.Source>
+            </Image>
+            <TextBlock Text="Версии не найдены" Style="{StaticResource Text.H3}" HorizontalAlignment="Center" />
+            <TextBlock Text="Измените фильтры или поисковый запрос." Style="{StaticResource Text.Small}"
+                       HorizontalAlignment="Center" Margin="0,4,0,0" />
+          </StackPanel>
+        </Grid>
+      </Grid>
+    </Grid>
+  </Border>
+</UserControl>

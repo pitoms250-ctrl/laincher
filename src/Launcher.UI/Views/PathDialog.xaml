@@ -1,0 +1,41 @@
+<Window x:Class="Launcher.UI.Views.PathDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Куда установить?" Width="560" Height="520" WindowStartupLocation="CenterOwner"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize"
+        FontFamily="Inter, Montserrat, Segoe UI" Foreground="White" UseLayoutRounding="True">
+  <Border Margin="8" CornerRadius="20" BorderBrush="#6639FF14" BorderThickness="1.5" Padding="22" MouseLeftButtonDown="Drag">
+    <Border.Background>
+      <LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#03140E" Offset="0"/><GradientStop Color="#0B3D2E" Offset="1"/></LinearGradientBrush>
+    </Border.Background>
+    <DockPanel>
+      <StackPanel DockPanel.Dock="Top">
+        <TextBlock Text="Куда скачивать игру?" FontSize="22" FontWeight="Bold"/>
+        <TextBlock Margin="0,6,0,14" Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap">
+          Minecraft с ассетами занимает 1–3 ГБ, а каждая версия — ещё сотни мегабайт. Выберите диск с достаточным местом.
+        </TextBlock>
+      </StackPanel>
+      <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,14,0,0">
+        <Button Style="{StaticResource OutlineButton}" Content="Другая папка…" Click="Browse_Click"/>
+        <Button Style="{StaticResource OutlineButton}" Content="Отмена" Margin="10,0,0,0" Click="Cancel_Click"/>
+        <Button Style="{StaticResource PlayButton}" Content="Установить сюда" FontSize="15" Margin="10,0,0,0" Padding="22,0" Click="Ok_Click"/>
+      </StackPanel>
+      <TextBlock DockPanel.Dock="Bottom" x:Name="PathText" Margin="0,10,0,0" Foreground="#57F287" TextWrapping="Wrap"/>
+      <ListBox x:Name="Drives" Background="Transparent" BorderThickness="0" Foreground="White" ItemContainerStyle="{StaticResource SelectableItem}" SelectionChanged="Drives_SelectionChanged">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Grid>
+              <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+              <Border Width="46" Height="46" CornerRadius="10" Background="#1FBF4A"><TextBlock Text="{Binding Letter}" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+              <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                <TextBlock FontWeight="SemiBold"><Run Text="{Binding Title, Mode=OneWay}"/><Run Text="{Binding Badge, Mode=OneWay}" Foreground="#FFD54F"/></TextBlock>
+                <TextBlock Text="{Binding FreeText}" FontSize="12" Foreground="{StaticResource MutedBrush}"/>
+                <ProgressBar Value="{Binding UsedFraction, Mode=OneWay}" Maximum="1" Height="5" Margin="0,6,0,0" BorderThickness="0" Foreground="#3DDC84" Background="#33000000"/>
+              </StackPanel>
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </DockPanel>
+  </Border>
+</Window>

@@ -1,0 +1,136 @@
+<UserControl x:Class="Launcher.UI.Views.OnlineView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Foreground="{DynamicResource Brush.TextPrimary}"
+             UseLayoutRounding="True"
+             SnapsToDevicePixels="True"
+             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextRenderingMode="ClearType">
+  <Border Style="{StaticResource Card.Glass}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Grid Grid.Row="0" Margin="0,0,0,16">
+        <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="200" /></Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Text="Онлайн-серверы" Style="{StaticResource Text.H1}" />
+          <TextBlock Text="Состояние, версия и задержка подключённых серверов."
+                     Style="{StaticResource Text.Small}" Margin="0,4,0,0" TextWrapping="Wrap" />
+        </StackPanel>
+         <Image Grid.Column="1" Width="188" Height="136" HorizontalAlignment="Right"
+           Style="{StaticResource Decor.Float.Medium}"
+               RenderOptions.BitmapScalingMode="HighQuality" IsHitTestVisible="False"
+               Stretch="Uniform" SnapsToDevicePixels="True">
+          <Image.Source><BitmapImage UriSource="pack://application:,,,/imge/deco-village.png" DecodePixelWidth="240" /></Image.Source>
+        </Image>
+      </Grid>
+      <Grid Grid.Row="1" Margin="0,0,0,16">
+        <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+        <TextBox Style="{StaticResource TextBox.Themed}"
+                 Tag="Адрес сервера, например play.example.com"
+                 Text="{Binding NewServerAddress, UpdateSourceTrigger=PropertyChanged}"
+                 Margin="0,0,8,0" />
+        <Button Grid.Column="1" Style="{StaticResource Button.Primary}"
+                Content="Добавить сервер" Command="{Binding AddServerCommand}" Margin="0,0,8,0" />
+        <Button Grid.Column="2" Style="{StaticResource Button.Ghost}"
+                Content="Обновить" Command="{Binding RefreshCommand}" />
+      </Grid>
+      <Grid Grid.Row="2">
+        <ListBox ItemsSource="{Binding Servers}" Background="Transparent" BorderThickness="0"
+                 Foreground="{DynamicResource Brush.TextPrimary}" ItemContainerStyle="{StaticResource PlainItem}"
+                 VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"
+                 ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Border Margin="0,0,0,10" Padding="16" Background="{DynamicResource Brush.Surface}"
+                      BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1"
+                      CornerRadius="{DynamicResource Radius.Medium}">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="16" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                  </Grid.ColumnDefinitions>
+                  <Border Width="48" Height="48" CornerRadius="{DynamicResource Radius.Small}"
+                          Background="{DynamicResource Brush.Bg2}" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1">
+                    <Grid>
+                      <TextBlock Text="&#x26CF;" FontFamily="{StaticResource IconFont}" FontSize="22"
+                                 Foreground="{DynamicResource Brush.Accent400}"
+                                 HorizontalAlignment="Center" VerticalAlignment="Center" />
+                      <Image Source="{Binding IconDataUrl}" Stretch="UniformToFill"
+                             RenderOptions.BitmapScalingMode="HighQuality" />
+                    </Grid>
+                  </Border>
+                  <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Name}" FontSize="{DynamicResource Type.H3}"
+                               FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                    <TextBlock Text="{Binding Address}" Style="{StaticResource Text.Mono}"
+                               TextTrimming="CharacterEllipsis" Margin="0,2,0,0" />
+                    <TextBlock Text="{Binding Motd}" Style="{StaticResource Text.Small}"
+                               TextTrimming="CharacterEllipsis" TextWrapping="Wrap" MaxHeight="36" Margin="0,4,0,0" />
+                    <TextBlock Text="{Binding Version}" Foreground="{DynamicResource Brush.Accent400}"
+                               FontSize="{DynamicResource Type.Caption}" Margin="0,4,0,0" />
+                  </StackPanel>
+                  <Border Grid.Column="3" Style="{StaticResource Badge}" VerticalAlignment="Center" Margin="12,0">
+                    <StackPanel Orientation="Horizontal">
+                      <Ellipse Width="8" Height="8" Margin="0,0,8,0" VerticalAlignment="Center">
+                        <Ellipse.Style>
+                          <Style TargetType="Ellipse">
+                            <Setter Property="Fill" Value="{DynamicResource Brush.TextTertiary}" />
+                            <Style.Triggers>
+                              <DataTrigger Binding="{Binding Online}" Value="True">
+                                <Setter Property="Fill" Value="{DynamicResource Brush.Success}" />
+                              </DataTrigger>
+                            </Style.Triggers>
+                          </Style>
+                        </Ellipse.Style>
+                      </Ellipse>
+                      <TextBlock VerticalAlignment="Center">
+                        <Run Text="{Binding Players, Mode=OneWay}" />
+                        <Run Text=" / " />
+                        <Run Text="{Binding MaxPlayers, Mode=OneWay}" />
+                      </TextBlock>
+                    </StackPanel>
+                  </Border>
+                  <Border Grid.Column="4" Style="{StaticResource Badge}" VerticalAlignment="Center" Margin="0,0,12,0">
+                    <TextBlock FontFamily="{DynamicResource Font.Mono}" VerticalAlignment="Center">
+                      <Run Text="{Binding PingMs, Mode=OneWay}" />
+                      <Run Text=" ms" />
+                    </TextBlock>
+                  </Border>
+                  <Button Grid.Column="5" Style="{StaticResource Button.Secondary}"
+                          Content="Подключиться" VerticalAlignment="Center"
+                          Command="{Binding DataContext.ConnectCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                          CommandParameter="{Binding}" />
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+          <StackPanel.Style>
+            <Style TargetType="StackPanel">
+              <Setter Property="Visibility" Value="Collapsed" />
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Servers.Count}" Value="0">
+                  <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </StackPanel.Style>
+          <TextBlock Text="Серверов пока нет" Style="{StaticResource Text.H3}" HorizontalAlignment="Center" />
+          <TextBlock Text="Добавьте адрес сервера или обновите список."
+                     Style="{StaticResource Text.Small}" HorizontalAlignment="Center" Margin="0,4,0,10" />
+          <Button Style="{StaticResource Button.Secondary}" Content="Обновить"
+                  Command="{Binding RefreshCommand}" HorizontalAlignment="Center" />
+        </StackPanel>
+      </Grid>
+    </Grid>
+  </Border>
+</UserControl>

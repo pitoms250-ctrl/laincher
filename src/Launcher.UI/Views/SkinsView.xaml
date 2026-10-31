@@ -1,0 +1,163 @@
+<UserControl x:Class="Launcher.UI.Views.SkinsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Foreground="{DynamicResource Brush.TextPrimary}"
+             UseLayoutRounding="True"
+             SnapsToDevicePixels="True"
+             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextRenderingMode="ClearType">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="112" />
+            </Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Редактор скина" Style="{StaticResource Text.H1}" />
+                <TextBlock Text="Рисуйте по текстуре 64×64 и проверяйте модель в предпросмотре."
+                   Style="{StaticResource Text.Small}" Margin="0,4,0,0" TextWrapping="Wrap" />
+            </StackPanel>
+            <Image Grid.Column="1" Width="104" Height="104" HorizontalAlignment="Right"
+              Style="{StaticResource Decor.Float.Medium}"
+             RenderOptions.BitmapScalingMode="HighQuality" IsHitTestVisible="False"
+             Stretch="Uniform" SnapsToDevicePixels="True">
+                <Image.Source>
+                    <BitmapImage UriSource="pack://application:,,,/imge/deco-fox.png" DecodePixelWidth="160" />
+                </Image.Source>
+            </Image>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="12" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="12" />
+                <ColumnDefinition Width="264" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Style="{StaticResource Card.Glass}" Padding="4,8">
+                <StackPanel>
+                    <RadioButton Style="{StaticResource ToolRadio}" GroupName="skintool" ToolTip="Карандаш"
+                       Command="{Binding SkinEditor.SetToolCommand}" CommandParameter="Pencil"
+                       IsChecked="{Binding SkinEditor.Tool, Converter={StaticResource Eq}, ConverterParameter=Pencil, Mode=OneWay}">
+                        <TextBlock Text="&#x270E;" FontFamily="Segoe UI Symbol" FontSize="20" />
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource ToolRadio}" GroupName="skintool" ToolTip="Ластик"
+                       Command="{Binding SkinEditor.SetToolCommand}" CommandParameter="Eraser"
+                       IsChecked="{Binding SkinEditor.Tool, Converter={StaticResource Eq}, ConverterParameter=Eraser, Mode=OneWay}">
+                        <TextBlock Text="&#x2326;" FontFamily="Segoe UI Symbol" FontSize="20" />
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource ToolRadio}" GroupName="skintool" ToolTip="Заливка"
+                       Command="{Binding SkinEditor.SetToolCommand}" CommandParameter="Fill"
+                       IsChecked="{Binding SkinEditor.Tool, Converter={StaticResource Eq}, ConverterParameter=Fill, Mode=OneWay}">
+                        <TextBlock Text="&#x25A3;" FontFamily="Segoe UI Symbol" FontSize="20" />
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource ToolRadio}" GroupName="skintool" ToolTip="Пипетка"
+                       Command="{Binding SkinEditor.SetToolCommand}" CommandParameter="Picker"
+                       IsChecked="{Binding SkinEditor.Tool, Converter={StaticResource Eq}, ConverterParameter=Picker, Mode=OneWay}">
+                        <TextBlock Text="&#x25C9;" FontFamily="Segoe UI Symbol" FontSize="20" />
+                    </RadioButton>
+                    <Button Style="{StaticResource IconButton.Themed}" Content="&#xE7A7;" FontFamily="{StaticResource IconFont}"
+                  ToolTip="Отменить" Margin="0,8,0,0" Command="{Binding SkinEditor.UndoCommand}" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="2" Style="{StaticResource Card.Glass}" Padding="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Текстура 64 × 64" Style="{StaticResource Text.H3}" Margin="0,0,0,12" />
+                    <Border Grid.Row="1" CornerRadius="{DynamicResource Radius.Medium}"
+                  BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1" ClipToBounds="True">
+                        <Border.Background>
+                            <DrawingBrush TileMode="Tile" Viewport="0,0,24,24" ViewportUnits="Absolute">
+                                <DrawingBrush.Drawing>
+                                    <DrawingGroup>
+                                        <GeometryDrawing Brush="#0C2A20">
+                                            <GeometryDrawing.Geometry>
+                                                <RectangleGeometry Rect="0,0,24,24" />
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                        <GeometryDrawing Brush="#103528">
+                                            <GeometryDrawing.Geometry>
+                                                <GeometryGroup>
+                                                    <RectangleGeometry Rect="0,0,12,12" />
+                                                    <RectangleGeometry Rect="12,12,12,12" />
+                                                </GeometryGroup>
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                    </DrawingGroup>
+                                </DrawingBrush.Drawing>
+                            </DrawingBrush>
+                        </Border.Background>
+                        <Viewbox Stretch="Uniform" Margin="8">
+                            <Image x:Name="CanvasImage" Width="512" Height="512" Source="{Binding SkinEditor.Canvas}"
+                     RenderOptions.BitmapScalingMode="NearestNeighbor" Cursor="Pen"
+                     MouseLeftButtonDown="Canvas_Down" MouseMove="Canvas_Move" MouseLeftButtonUp="Canvas_Up" />
+                        </Viewbox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="4" Style="{StaticResource Card.Glass}" Padding="16">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="0,0,4,0">
+                        <TextBlock Text="Предпросмотр" Style="{StaticResource Text.H3}" />
+                        <Border Margin="0,8,0,0" CornerRadius="{DynamicResource Radius.Medium}"
+                    Background="{DynamicResource Brush.Bg2}" BorderBrush="{DynamicResource Brush.Border}"
+                    BorderThickness="1" Padding="8">
+                            <Image Source="{Binding SkinEditor.Preview}" Height="164"
+                     RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="Uniform" />
+                        </Border>
+                        <TextBlock Text="Цвет" Style="{StaticResource Text.H3}" Margin="0,16,0,8" />
+                        <ItemsControl ItemsSource="{Binding SkinEditor.Palette}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource Swatch}" Background="{Binding}"
+                          Command="{Binding DataContext.SkinEditor.PickPaletteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                          CommandParameter="{Binding}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <DockPanel Margin="0,8,0,0">
+                            <Border DockPanel.Dock="Left" Width="32" Height="32" CornerRadius="{DynamicResource Radius.Small}"
+                      BorderBrush="{DynamicResource Brush.BorderStrong}" BorderThickness="1" Margin="0,0,8,0">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding SkinEditor.CurrentColor}" />
+                                </Border.Background>
+                            </Border>
+                            <Button DockPanel.Dock="Right" Style="{StaticResource Button.Secondary}" MinHeight="32"
+                      Content="Применить" Margin="8,0,0,0" Command="{Binding SkinEditor.ApplyHexCommand}" />
+                            <TextBox Style="{StaticResource TextBox.Mono}" Tag="#RRGGBB"
+                       Text="{Binding SkinEditor.Hex, UpdateSourceTrigger=PropertyChanged}" />
+                        </DockPanel>
+                        <TextBlock Text="Загрузка" Style="{StaticResource Text.H3}" Margin="0,16,0,8" />
+                        <DockPanel>
+                            <Button DockPanel.Dock="Right" Style="{StaticResource Button.Secondary}" MinHeight="32"
+                      Content="Загрузить" Margin="8,0,0,0" Command="{Binding LoadSkinByNickCommand}" Width="105" />
+                            <TextBox Style="{StaticResource TextBox.Themed}" Tag="Имя игрока"
+                       Text="{Binding SkinInput, UpdateSourceTrigger=PropertyChanged}" Width="100" RenderTransformOrigin="0.235,0.478" TextChanged="TextBox_TextChanged" />
+                        </DockPanel>
+                        <UniformGrid Columns="2" Margin="0,8,0,0"/>
+                        <Button Style="{StaticResource Button.Primary}" Content="Сохранить PNG" Margin="0,8,0,0"
+                    Command="{Binding SkinEditor.SaveFileCommand}" />
+                        <CheckBox Style="{StaticResource CheckBox.Themed}" Content="Тонкие руки (Alex / slim)"
+                      IsChecked="{Binding SkinEditor.Slim}" Margin="0,12,0,0" />
+                        <TextBlock Text="Скин можно сохранить в PNG и загрузить в профиль игры отдельно."
+                       Style="{StaticResource Text.Caption}" TextWrapping="Wrap" Margin="0,10,0,0" />
+                        <TextBlock Text="{Binding SkinEditor.Status}" Foreground="{DynamicResource Brush.Success}"
+                       FontSize="{DynamicResource Type.Caption}" TextWrapping="Wrap" Margin="0,10,0,0" />
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

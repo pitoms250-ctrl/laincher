@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B1A2C3D4-0001-4000-8000-000000000001}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B1A2C3D4-0002-4000-8000-000000000002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Shared", "src\Launcher.Shared\Launcher.Shared.csproj", "{D6B21DE9-C6A2-5845-8FDB-582D2806E1D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Core", "src\Launcher.Core\Launcher.Core.csproj", "{96146D8A-B417-5E75-A0CF-40630D69F1F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Infrastructure", "src\Launcher.Infrastructure\Launcher.Infrastructure.csproj", "{790F82B2-A6F1-5814-84C8-443CC22000DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Services", "src\Launcher.Services\Launcher.Services.csproj", "{AAFBAF6B-5B6F-5112-A564-36E9A6FBCDD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.UI", "src\Launcher.UI\Launcher.UI.csproj", "{BAA9665F-269E-5512-BD93-45141D83B94D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Tests", "tests\Launcher.Tests\Launcher.Tests.csproj", "{25E68837-B893-509A-8189-57124F08DDBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6B21DE9-C6A2-5845-8FDB-582D2806E1D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6B21DE9-C6A2-5845-8FDB-582D2806E1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6B21DE9-C6A2-5845-8FDB-582D2806E1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6B21DE9-C6A2-5845-8FDB-582D2806E1D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96146D8A-B417-5E75-A0CF-40630D69F1F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96146D8A-B417-5E75-A0CF-40630D69F1F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96146D8A-B417-5E75-A0CF-40630D69F1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96146D8A-B417-5E75-A0CF-40630D69F1F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{790F82B2-A6F1-5814-84C8-443CC22000DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{790F82B2-A6F1-5814-84C8-443CC22000DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{790F82B2-A6F1-5814-84C8-443CC22000DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{790F82B2-A6F1-5814-84C8-443CC22000DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAFBAF6B-5B6F-5112-A564-36E9A6FBCDD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAFBAF6B-5B6F-5112-A564-36E9A6FBCDD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAFBAF6B-5B6F-5112-A564-36E9A6FBCDD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAFBAF6B-5B6F-5112-A564-36E9A6FBCDD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA9665F-269E-5512-BD93-45141D83B94D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA9665F-269E-5512-BD93-45141D83B94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA9665F-269E-5512-BD93-45141D83B94D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA9665F-269E-5512-BD93-45141D83B94D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25E68837-B893-509A-8189-57124F08DDBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25E68837-B893-509A-8189-57124F08DDBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25E68837-B893-509A-8189-57124F08DDBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25E68837-B893-509A-8189-57124F08DDBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D6B21DE9-C6A2-5845-8FDB-582D2806E1D3} = {B1A2C3D4-0001-4000-8000-000000000001}
+		{96146D8A-B417-5E75-A0CF-40630D69F1F5} = {B1A2C3D4-0001-4000-8000-000000000001}
+		{790F82B2-A6F1-5814-84C8-443CC22000DE} = {B1A2C3D4-0001-4000-8000-000000000001}
+		{AAFBAF6B-5B6F-5112-A564-36E9A6FBCDD3} = {B1A2C3D4-0001-4000-8000-000000000001}
+		{BAA9665F-269E-5512-BD93-45141D83B94D} = {B1A2C3D4-0001-4000-8000-000000000001}
+		{25E68837-B893-509A-8189-57124F08DDBD} = {B1A2C3D4-0002-4000-8000-000000000002}
+	EndGlobalSection
+EndGlobal

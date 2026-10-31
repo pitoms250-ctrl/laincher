@@ -1,0 +1,258 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "staff": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || (auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'))",
+        ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'",
+        ".validate": "newData.hasChildren(['email', 'role']) && (newData.child('role').val() === 'owner' || newData.child('role').val() === 'support' || newData.child('role').val() === 'marketing')",
+        "email": { ".validate": "newData.isString() && newData.val().length <= 254" },
+        "displayName": { ".validate": "newData.isString() && newData.val().length <= 80" },
+        "role": { ".validate": "newData.val() === 'owner' || newData.val() === 'support' || newData.val() === 'marketing'" },
+        "createdAt": { ".validate": "newData.isNumber()" },
+        "updatedAt": { ".validate": "newData.isNumber()" },
+        "invitedBy": { ".validate": "newData.isString() && newData.val().length <= 128" }
+      }
+    },
+    "staffInvites": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || (auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'))",
+        ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'"
+      }
+    },
+    "players": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')",
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || (auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support'))) ",
+        ".write": "auth != null && auth.uid === $uid",
+        "profile": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid",
+          ".validate": "newData.hasChildren(['nickname', 'lastSeenAt'])",
+          "nickname": { ".validate": "newData.isString() && newData.val().length <= 16" },
+          "minecraftUuid": { ".validate": "newData.isString() && newData.val().length <= 64" },
+          "locale": { ".validate": "newData.val() === 'ru-RU' || newData.val() === 'uk-UA' || newData.val() === 'en-US'" },
+          "createdAt": { ".validate": "newData.isNumber()" },
+          "lastSeenAt": { ".validate": "newData.isNumber()" },
+          "$other": { ".validate": false }
+        }
+      }
+    },
+    "presence": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || (auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support'))) ",
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['state', 'heartbeatAt', 'launcherVersion'])",
+        "state": { ".validate": "newData.val() === 'online' || newData.val() === 'in_game' || newData.val() === 'offline'" },
+        "heartbeatAt": { ".validate": "newData.isNumber()" },
+        "launcherVersion": { ".validate": "newData.isString() && newData.val().length <= 32" },
+        "gameVersion": { ".validate": "newData.isString() && newData.val().length <= 32" },
+        "$other": { ".validate": false }
+      }
+    },
+    "playerEvents": {
+      "$uid": {
+        ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')",
+        "$eventId": {
+          ".write": "auth != null && auth.uid === $uid",
+          ".validate": "newData.hasChildren(['eventType', 'area', 'occurredAt', 'locale', 'launcherVersion'])",
+          "eventType": { ".validate": "newData.isString() && newData.val().length <= 48" },
+          "area": { ".validate": "newData.isString() && newData.val().length <= 48" },
+          "occurredAt": { ".validate": "newData.isNumber()" },
+          "locale": { ".validate": "newData.isString() && newData.val().length <= 10" },
+          "launcherVersion": { ".validate": "newData.isString() && newData.val().length <= 32" },
+          "gameVersion": { ".validate": "newData.isString() && newData.val().length <= 32" },
+          "$other": { ".validate": false }
+        }
+      }
+    },
+    "errorReports": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')",
+      "$uid": {
+        "$errorId": {
+          ".write": "auth != null && auth.uid === $uid",
+          ".validate": "newData.hasChildren(['occurredAt', 'area', 'title', 'description', 'fingerprint', 'locale', 'launcherVersion', 'device'])",
+          "occurredAt": { ".validate": "newData.isNumber()" },
+          "area": { ".validate": "newData.isString() && newData.val().length <= 48" },
+          "title": { ".validate": "newData.isString() && newData.val().length <= 160" },
+          "description": { ".validate": "newData.isString() && newData.val().length <= 4000" },
+          "fingerprint": { ".validate": "newData.isString() && newData.val().length === 64" },
+          "locale": { ".validate": "newData.isString() && newData.val().length <= 10" },
+          "launcherVersion": { ".validate": "newData.isString() && newData.val().length <= 32" },
+          "gameVersion": { ".validate": "newData.isString() && newData.val().length <= 32" },
+          "device": {
+            ".validate": "newData.hasChildren(['os', 'architecture', 'ramBucket', 'logicalProcessors'])",
+            "os": { ".validate": "newData.isString() && newData.val().length <= 128" },
+            "architecture": { ".validate": "newData.isString() && newData.val().length <= 16" },
+            "ramBucket": { ".validate": "newData.isString() && newData.val().length <= 16" },
+            "logicalProcessors": { ".validate": "newData.isNumber() && newData.val() <= 256" },
+            "$other": { ".validate": false }
+          },
+          "$other": { ".validate": false }
+        }
+      }
+    },
+    "zbtCampaigns": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')",
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'",
+      "$campaignId": {
+        ".read": "auth != null"
+      }
+    },
+    "zbtKeys": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')",
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'"
+    },
+    "campaigns": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')",
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'"
+    },
+    "keys": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')",
+      "$keyHash": {
+        ".read": "auth != null && ((auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')) || data.child('used').val() === false || data.child('usedBy').val() === auth.uid)",
+        ".validate": "newData.child('used').val() !== true || root.child('config').child('zbtEnabled').val() !== false || (auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner')",
+        ".write": "auth != null && ((auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner') || (root.child('config').child('zbtEnabled').val() !== false && data.exists() && data.child('used').val() === false && data.child('status').val() === 'UNUSED' && data.child('revoked').val() !== true && newData.child('used').val() === true && newData.child('status').val() === 'ACTIVATED' && newData.child('revoked').val() !== true && newData.child('usedBy').val() === auth.uid && newData.child('installId').isString() && newData.child('campaignId').val() === data.child('campaignId').val() && root.child('zbtCampaigns').child(data.child('campaignId').val()).child('status').val() === 'ACTIVE' && newData.child('hash').val() === data.child('hash').val() && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('expiresAt').val() === data.child('expiresAt').val() && newData.child('activatedAt').isNumber()))"
+      }
+    },
+    "bans": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')",
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')",
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid"
+      }
+    },
+    "errors": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')",
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')"
+    },
+    "dailyAnalytics": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support' || root.child('staff').child(auth.uid).child('role').val() === 'marketing')",
+      ".write": false
+    },
+    "news": {
+      ".read": true,
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'marketing')"
+    },
+    "announcements": {
+      ".read": true,
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'marketing')"
+    },
+    "auditLog": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'",
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support')"
+    },
+    "shop_items": {
+      ".read": "auth != null",
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'"
+    },
+    "orders": {
+      ".indexOn": ["createdAt", "paymentMethod", "receiptReviewDeadlineAt"],
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'",
+      "$orderId": {
+        ".read": "auth != null && data.child('uid').val() === auth.uid",
+        ".write": "auth != null && ((auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner') || (!data.exists() && auth.token.firebase.sign_in_provider !== 'anonymous' && newData.child('uid').val() === auth.uid && newData.child('status').val() === 'pending' && newData.child('createdAt').isNumber() && newData.child('itemId').isString() && root.child('shop_items').child(newData.child('itemId').val()).child('enabled').val() === true && newData.child('itemType').val() === root.child('shop_items').child(newData.child('itemId').val()).child('type').val() && newData.child('baseAmount').isNumber() && newData.child('baseAmount').val() > 0 && newData.child('amount').isNumber() && ((newData.child('paymentMethod').val() === 'card' && newData.child('currency').val() === 'UAH' && newData.child('baseAmount').val() === root.child('shop_items').child(newData.child('itemId').val()).child('priceUah').val() && newData.child('amount').val() >= newData.child('baseAmount').val() && newData.child('amount').val() < newData.child('baseAmount').val() + 1) || (newData.child('paymentMethod').val() === 'crypto' && newData.child('currency').val() === 'USDT' && newData.child('baseAmount').val() === root.child('shop_items').child(newData.child('itemId').val()).child('priceUsdt').val() && newData.child('amount').val() === newData.child('baseAmount').val())) && ((newData.child('itemType').val() !== 'tag' && newData.child('tag').val() === null) || (newData.child('itemType').val() === 'tag' && newData.child('tag').isString()))) || (!newData.exists() && data.child('uid').val() === auth.uid && data.child('status').val() === 'pending'))"
+      }
+    },
+    "analytics": {
+      "sales": {
+        ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && (root.child('staff').child(auth.uid).child('role').val() === 'owner' || root.child('staff').child(auth.uid).child('role').val() === 'support' || root.child('staff').child(auth.uid).child('role').val() === 'marketing')",
+        ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'"
+      }
+    },
+    "entitlements": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'"
+      }
+    },
+    "tags": {
+      ".read": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'",
+      "$tag": {
+        ".read": "auth != null && (data.child('uid').val() === auth.uid || (auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'))",
+        ".write": "auth != null && ((auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner') || (!data.exists() && newData.child('uid').val() === auth.uid && newData.child('status').val() === 'reserved' && newData.child('orderId').isString() && newData.child('itemId').isString() && root.child('shop_items').child(newData.child('itemId').val()).child('enabled').val() === true && root.child('shop_items').child(newData.child('itemId').val()).child('type').val() === 'tag' && root.child('orders').child(newData.child('orderId').val()).child('uid').val() === auth.uid && root.child('orders').child(newData.child('orderId').val()).child('tag').val() === $tag && root.child('orders').child(newData.child('orderId').val()).child('itemId').val() === newData.child('itemId').val() && root.child('orders').child(newData.child('orderId').val()).child('status').val() === 'pending') || (!newData.exists() && data.child('uid').val() === auth.uid && data.child('status').val() === 'reserved' && !root.child('orders').child(data.child('orderId').val()).exists()))"
+      }
+    },
+    "processed_receipts": {
+      ".read": false,
+      ".write": false
+    },
+    "shop_config": {
+      ".read": "auth != null",
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'"
+    },
+    "case_drops": {
+      ".read": "auth != null",
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'"
+    },
+    "wallets": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+    "ledger": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+    "owned": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+    "case_inventory": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+    "case_openings": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+    "dailyClaims": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+    "equipped": {
+      "$uid": {
+        ".read": "auth != null",
+        "$slot": {
+          ".write": "auth != null && auth.uid === $uid && ($slot === 'frame' || $slot === 'cape' || $slot === 'tag' || $slot === 'nick_color' || $slot === 'nick_effect' || $slot === 'badge' || $slot === 'banner' || $slot === 'theme')",
+          ".validate": "newData.val() === null || (newData.isString() && root.child('owned').child($uid).child(newData.val()).exists())"
+        }
+      }
+    },
+    "profile_tags": {
+      ".read": "auth != null",
+      ".write": false
+    },
+    "tags_taken": {
+      ".read": "auth != null",
+      ".write": false
+    },
+    "gifts": {
+      "$giftId": {
+        ".read": "auth != null && (auth.uid === data.child('fromUid').val() || auth.uid === data.child('toUid').val())",
+        ".write": false
+      }
+    },
+    "config": {
+      ".read": true,
+      ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'"
+    },
+    "_diagnostics": {
+      "$id": {
+        ".write": "auth != null && auth.token.firebase.sign_in_second_factor != null && root.child('staff').child(auth.uid).child('role').val() === 'owner'"
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export function nextDynamicPrice(item: { priceUah?: number; priceUsdt?: number; priceStepUah?: number; priceStepUsdt?: number; dynamicPrice?: boolean }, currency?: "UAH" | "USDT"): number;

@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <FontFamily x:Key="Font.Body">/Fonts/#Manrope</FontFamily>
+  <FontFamily x:Key="Font.Display">/Fonts/#Onest</FontFamily>
+  <FontFamily x:Key="Font.Mono">/Fonts/#JetBrains Mono</FontFamily>
+
+  <sys:Double x:Key="Type.Display">40</sys:Double>
+  <sys:Double x:Key="Type.H1">28</sys:Double>
+  <sys:Double x:Key="Type.H2">20</sys:Double>
+  <sys:Double x:Key="Type.H3">16</sys:Double>
+  <sys:Double x:Key="Type.Body">14</sys:Double>
+  <sys:Double x:Key="Type.Small">13</sys:Double>
+  <sys:Double x:Key="Type.Caption">12</sys:Double>
+
+  <Style x:Key="Text.Display" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{DynamicResource Font.Display}" />
+    <Setter Property="FontSize" Value="{DynamicResource Type.Display}" />
+    <Setter Property="FontWeight" Value="Bold" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.TextPrimary}" />
+  </Style>
+  <Style x:Key="Text.H1" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{DynamicResource Font.Display}" />
+    <Setter Property="FontSize" Value="{DynamicResource Type.H1}" />
+    <Setter Property="FontWeight" Value="Bold" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.TextPrimary}" />
+  </Style>
+  <Style x:Key="Text.H2" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{DynamicResource Font.Display}" />
+    <Setter Property="FontSize" Value="{DynamicResource Type.H2}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.TextPrimary}" />
+  </Style>
+  <Style x:Key="Text.H3" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{DynamicResource Font.Display}" />
+    <Setter Property="FontSize" Value="{DynamicResource Type.H3}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.TextPrimary}" />
+  </Style>
+  <Style x:Key="Text.Body" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{DynamicResource Font.Body}" />
+    <Setter Property="FontSize" Value="{DynamicResource Type.Body}" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.TextPrimary}" />
+  </Style>
+  <Style x:Key="Text.Small" TargetType="TextBlock" BasedOn="{StaticResource Text.Body}">
+    <Setter Property="FontSize" Value="{DynamicResource Type.Small}" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.TextSecondary}" />
+  </Style>
+  <Style x:Key="Text.Caption" TargetType="TextBlock" BasedOn="{StaticResource Text.Body}">
+    <Setter Property="FontSize" Value="{DynamicResource Type.Caption}" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.TextTertiary}" />
+  </Style>
+  <Style x:Key="Text.Mono" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{DynamicResource Font.Mono}" />
+    <Setter Property="FontSize" Value="{DynamicResource Type.Small}" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.TextSecondary}" />
+  </Style>
+</ResourceDictionary>

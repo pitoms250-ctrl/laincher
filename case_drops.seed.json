@@ -1,0 +1,51 @@
+{
+  "case_basic": [
+    { "kind": "coins", "amount": 10, "weight": 3500 }, { "kind": "coins", "amount": 25, "weight": 2200 },
+    { "kind": "item", "itemId": "nick_emerald", "weight": 1200 }, { "kind": "item", "itemId": "emoji_fox", "weight": 800 },
+    { "kind": "item", "itemId": "badge_fox", "weight": 700 }, { "kind": "item", "itemId": "frame_fl_emerald", "weight": 500 },
+    { "kind": "item", "itemId": "effect_pulse", "weight": 400 }, { "kind": "item", "itemId": "theme_amber", "weight": 300 },
+    { "kind": "item", "itemId": "cape_fl_classic", "weight": 250 }, { "kind": "item", "itemId": "tag_custom", "weight": 150 }
+  ],
+  "case_rare": [
+    { "kind": "coins", "amount": 50, "weight": 2500 }, { "kind": "coins", "amount": 100, "weight": 1500 },
+    { "kind": "item", "itemId": "frame_fl_neon", "weight": 1300 }, { "kind": "item", "itemId": "nick_fire", "weight": 1000 },
+    { "kind": "item", "itemId": "nick_ice", "weight": 1000 }, { "kind": "item", "itemId": "cape_fox_tail", "weight": 800 },
+    { "kind": "item", "itemId": "effect_glow", "weight": 700 }, { "kind": "item", "itemId": "banner_forest", "weight": 500 },
+    { "kind": "item", "itemId": "theme_cyber", "weight": 400 }, { "kind": "item", "itemId": "cape_fl_classic", "weight": 300 }
+  ],
+  "case_epic": [
+    { "kind": "coins", "amount": 150, "weight": 2000 }, { "kind": "item", "itemId": "frame_fl_gold", "weight": 1500 },
+    { "kind": "item", "itemId": "frame_fl_diamond", "weight": 1200 }, { "kind": "item", "itemId": "cape_emerald_wings", "weight": 1200 },
+    { "kind": "item", "itemId": "cape_void", "weight": 1000 }, { "kind": "item", "itemId": "nick_rainbow", "weight": 900 },
+    { "kind": "item", "itemId": "effect_sparkle", "weight": 800 }, { "kind": "item", "itemId": "cape_aurora", "weight": 700 },
+    { "kind": "item", "itemId": "banner_aurora", "weight": 500 }, { "kind": "item", "itemId": "tag_animated", "weight": 200 }
+  ],
+  "case_legendary": [
+    { "kind": "coins", "amount": 400, "weight": 2500 }, { "kind": "item", "itemId": "frame_fl_premium", "weight": 1800 },
+    { "kind": "item", "itemId": "cape_golden_legend", "weight": 1500 }, { "kind": "item", "itemId": "cape_dragon", "weight": 1500 },
+    { "kind": "item", "itemId": "frame_fl_rainbow", "weight": 1200 }, { "kind": "item", "itemId": "badge_creator", "weight": 700 },
+    { "kind": "item", "itemId": "premium_30", "weight": 500 }, { "kind": "item", "itemId": "tag_short", "weight": 300 }
+  ],
+  "case_cape": [
+    { "kind": "item", "itemId": "cape_fl_classic", "weight": 3000 }, { "kind": "item", "itemId": "cape_fox_tail", "weight": 2500 },
+    { "kind": "item", "itemId": "cape_void", "weight": 1700 }, { "kind": "item", "itemId": "cape_emerald_wings", "weight": 1300 },
+    { "kind": "item", "itemId": "cape_aurora", "weight": 800 }, { "kind": "item", "itemId": "cape_dragon", "weight": 450 },
+    { "kind": "item", "itemId": "cape_golden_legend", "weight": 250 }
+  ],
+  "case_frame": [
+    { "kind": "item", "itemId": "frame_fl_emerald", "weight": 3000 }, { "kind": "item", "itemId": "frame_fl_neon", "weight": 2500 },
+    { "kind": "item", "itemId": "frame_fl_gold", "weight": 1900 }, { "kind": "item", "itemId": "frame_fl_diamond", "weight": 1500 },
+    { "kind": "item", "itemId": "frame_fl_fire", "weight": 700 }, { "kind": "item", "itemId": "frame_fl_rainbow", "weight": 300 },
+    { "kind": "item", "itemId": "frame_fl_premium", "weight": 100 }
+  ],
+  "case_halloween_2026": [
+    { "kind": "coins", "amount": 25, "weight": 3000 }, { "kind": "coins", "amount": 50, "weight": 2500 },
+    { "kind": "item", "itemId": "badge_halloween_2026", "weight": 2000 }, { "kind": "item", "itemId": "nick_fire", "weight": 1200 },
+    { "kind": "item", "itemId": "frame_halloween_2026", "weight": 900 }, { "kind": "item", "itemId": "cape_halloween_2026", "weight": 400 }
+  ],
+  "case_winter_2026": [
+    { "kind": "coins", "amount": 25, "weight": 3000 }, { "kind": "coins", "amount": 50, "weight": 2500 },
+    { "kind": "item", "itemId": "badge_winter_2026", "weight": 2000 }, { "kind": "item", "itemId": "nick_ice", "weight": 1200 },
+    { "kind": "item", "itemId": "frame_winter_2026", "weight": 900 }, { "kind": "item", "itemId": "cape_winter_2026", "weight": 400 }
+  ]
+}

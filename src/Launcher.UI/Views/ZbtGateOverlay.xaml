@@ -1,0 +1,40 @@
+<UserControl x:Class="Launcher.UI.Views.ZbtGateOverlay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid>
+    <Border Background="#F2051210"/>
+
+    <Border Width="400" VerticalAlignment="Center" HorizontalAlignment="Center"
+            CornerRadius="16" Background="#0C1A14" BorderBrush="#1F3D2F" BorderThickness="1" Padding="28">
+      <StackPanel>
+
+        <DockPanel Margin="0,0,0,20">
+          <Button DockPanel.Dock="Right" Style="{StaticResource CloseButton}" Content="&#xE8BB;"
+                  ToolTip="Закрыть лаунчер" Command="{Binding ExitLauncherCommand}"/>
+          <TextBlock Text="Ключ ЗБТ" FontSize="22" FontWeight="Bold" Foreground="#E9F5EE" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <TextBlock Text="Введите ключ, чтобы открыть лаунчер" FontSize="13" Foreground="#7F9C8B" Margin="0,0,0,12"/>
+
+        <!-- Поле всегда активно: можно печатать или нажать Ctrl+V -->
+        <TextBox x:Name="KeyBox" Style="{StaticResource GhostTextBox}" Height="44" FontSize="16"
+                 FontFamily="Cascadia Mono, Consolas" CharacterCasing="Upper" MaxLength="40"
+                 Text="{Binding ZbtKeyInput, UpdateSourceTrigger=PropertyChanged}">
+          <TextBox.InputBindings>
+            <KeyBinding Key="Return" Command="{Binding RedeemZbtCommand}"/>
+          </TextBox.InputBindings>
+        </TextBox>
+
+        <Button Margin="0,6,0,0" HorizontalAlignment="Left" Cursor="Hand" Content="Вставить из буфера"
+                Click="PasteButton_Click" Background="Transparent" BorderThickness="0"
+                Foreground="#22C55E" FontSize="12" Padding="0,4"/>
+
+        <Button Margin="0,14,0,0" Style="{StaticResource PillButton}" Height="44"
+                Command="{Binding RedeemZbtCommand}" Content="Активировать"/>
+
+        <TextBlock Margin="0,12,0,0" TextWrapping="Wrap" FontSize="13" Foreground="#FBBF24"
+                   Text="{Binding ZbtMessage}"/>
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>

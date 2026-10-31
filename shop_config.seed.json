@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "enabled": true,
+  "minPriceUah": 50,
+  "usdtPerUah": 1,
+  "coinsPerUah": 1,
+  "caseOddsPublic": true,
+  "currencyDisplay": ["UAH", "USDT", "FL"],
+  "updatedAt": 0
+}

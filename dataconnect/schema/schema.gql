@@ -1,0 +1,147 @@
+enum ErrorState {
+  NEW
+  IN_PROGRESS
+  RESOLVED
+  IGNORED
+}
+
+enum SessionState {
+  ACTIVE
+  ENDED
+}
+
+enum PlanCode {
+  FREE
+  SUPPORTER
+  PATRON
+  EARLY_BIRD_LIFETIME_1X
+}
+
+enum SubscriptionState {
+  PENDING
+  ACTIVE
+  CANCELED
+  EXPIRED
+  REFUNDED
+}
+
+enum BillingPeriod {
+  MONTH
+  YEAR
+  ONE_TIME
+}
+
+type Player @table(key: "id") {
+  id: String! @default(expr: "auth.uid")
+  minecraftUuid: String @unique
+  nickname: String! @col(dataType: "varchar(16)")
+  locale: String! @default(value: "ru-RU") @col(dataType: "varchar(10)")
+  createdAt: Timestamp! @default(expr: "request.time")
+  lastSeenAt: Timestamp! @default(expr: "request.time")
+}
+
+type PlayerSession @table {
+  id: UUID! @default(expr: "uuidV4()")
+  player: Player!
+  installId: UUID!
+  state: SessionState! @default(value: ACTIVE)
+  startedAt: Timestamp! @default(expr: "request.time")
+  heartbeatAt: Timestamp! @default(expr: "request.time")
+  endedAt: Timestamp
+  launcherVersion: String! @col(dataType: "varchar(32)")
+  gameVersion: String @col(dataType: "varchar(32)")
+  osFamily: String! @col(dataType: "varchar(24)")
+  osVersion: String @col(dataType: "varchar(64)")
+  architecture: String! @col(dataType: "varchar(16)")
+  ramBucket: String @col(dataType: "varchar(16)")
+  javaMajor: Int
+  gpuVendor: String @col(dataType: "varchar(32)")
+}
+
+type PlayerEvent @table {
+  id: UUID! @default(expr: "uuidV4()")
+  player: Player!
+  installId: UUID
+  eventType: String! @col(dataType: "varchar(48)")
+  area: String! @col(dataType: "varchar(48)")
+  occurredAt: Timestamp! @default(expr: "request.time")
+  locale: String! @col(dataType: "varchar(10)")
+  launcherVersion: String! @col(dataType: "varchar(32)")
+  gameVersion: String @col(dataType: "varchar(32)")
+}
+
+type ErrorReport @table {
+  id: UUID! @default(expr: "uuidV4()")
+  player: Player!
+  session: PlayerSession
+  installId: UUID
+  occurredAt: Timestamp! @default(expr: "request.time")
+  area: String! @col(dataType: "varchar(48)")
+  errorCode: String @col(dataType: "varchar(64)")
+  title: String! @col(dataType: "varchar(160)")
+  description: String! @col(dataType: "varchar(4000)")
+  fingerprint: String @col(dataType: "varchar(64)")
+  locale: String! @col(dataType: "varchar(10)")
+  launcherVersion: String! @col(dataType: "varchar(32)")
+  gameVersion: String @col(dataType: "varchar(32)")
+  osFamily: String! @col(dataType: "varchar(24)")
+  osVersion: String @col(dataType: "varchar(64)")
+  architecture: String! @col(dataType: "varchar(16)")
+  ramBucket: String @col(dataType: "varchar(16)")
+  javaMajor: Int
+  gpuVendor: String @col(dataType: "varchar(32)")
+  state: ErrorState! @default(value: NEW)
+  adminNote: String @col(dataType: "varchar(2000)")
+  resolvedAt: Timestamp
+}
+
+type Achievement @table(key: "code") {
+  code: String! @col(dataType: "varchar(48)")
+  title: String! @col(dataType: "varchar(120)")
+  description: String! @col(dataType: "varchar(500)")
+  points: Int! @default(value: 0)
+  isActive: Boolean! @default(value: true)
+}
+
+type PlayerAchievement @table(key: ["player", "achievement"]) {
+  player: Player!
+  achievement: Achievement!
+  unlockedAt: Timestamp! @default(expr: "request.time")
+}
+
+type PlanCatalog @table(key: "code") {
+  code: PlanCode!
+  title: String! @col(dataType: "varchar(80)")
+  description: String! @col(dataType: "varchar(1000)")
+  isAvailable: Boolean! @default(value: false)
+  lifetimeBranch: String @col(dataType: "varchar(16)")
+  lifetimeLimit: Int
+}
+
+type PlanPrice @table(key: ["plan", "regionCode", "currency", "billingPeriod"]) {
+  plan: PlanCatalog!
+  regionCode: String! @col(dataType: "varchar(8)")
+  currency: String! @col(dataType: "varchar(3)")
+  billingPeriod: BillingPeriod!
+  amountMinor: Int!
+  providerProductId: String! @col(dataType: "varchar(120)")
+  isAvailable: Boolean! @default(value: false)
+}
+
+type PlayerSubscription @table {
+  id: UUID! @default(expr: "uuidV4()")
+  player: Player!
+  plan: PlanCatalog!
+  billingPeriod: BillingPeriod!
+  state: SubscriptionState! @default(value: PENDING)
+  regionCode: String! @col(dataType: "varchar(8)")
+  currency: String! @col(dataType: "varchar(3)")
+  amountMinor: Int!
+  paymentProvider: String! @col(dataType: "varchar(32)")
+  providerTransactionId: String! @col(dataType: "varchar(160)")
+  branchEntitlement: String @col(dataType: "varchar(16)")
+  startedAt: Timestamp
+  expiresAt: Timestamp
+  verifiedAt: Timestamp
+  createdAt: Timestamp! @default(expr: "request.time")
+}

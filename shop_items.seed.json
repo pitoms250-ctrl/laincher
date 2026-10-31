@@ -1,0 +1,1487 @@
+{
+  "coins_50": {
+    "name": "50 FL Coins",
+    "description": "Пакет игровой валюты",
+    "type": "coins",
+    "priceUah": 50,
+    "priceUsdt": 50,
+    "rarity": "common",
+    "category": "currency",
+    "sortOrder": 10,
+    "giftable": false,
+    "limited": false,
+    "assets": {
+      "icon": "shop/currency/coins_50.png"
+    },
+    "metadata": {
+      "coinAmount": 50
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "coins_100": {
+    "name": "100 FL Coins",
+    "description": "Пакет игровой валюты",
+    "type": "coins",
+    "priceUah": 105,
+    "priceUsdt": 105,
+    "rarity": "common",
+    "category": "currency",
+    "sortOrder": 20,
+    "giftable": false,
+    "limited": false,
+    "assets": {
+      "icon": "shop/currency/coins_100.png"
+    },
+    "metadata": {
+      "coinAmount": 100
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "coins_250": {
+    "name": "250 FL Coins",
+    "description": "Пакет игровой валюты",
+    "type": "coins",
+    "priceUah": 275,
+    "priceUsdt": 275,
+    "rarity": "rare",
+    "category": "currency",
+    "sortOrder": 30,
+    "giftable": false,
+    "limited": false,
+    "assets": {
+      "icon": "shop/currency/coins_250.png"
+    },
+    "metadata": {
+      "coinAmount": 250
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "coins_500": {
+    "name": "500 FL Coins",
+    "description": "Пакет игровой валюты",
+    "type": "coins",
+    "priceUah": 575,
+    "priceUsdt": 575,
+    "rarity": "epic",
+    "category": "currency",
+    "sortOrder": 40,
+    "giftable": false,
+    "limited": false,
+    "assets": {
+      "icon": "shop/currency/coins_500.png"
+    },
+    "metadata": {
+      "coinAmount": 500
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "coins_1000": {
+    "name": "1000 FL Coins",
+    "description": "Пакет игровой валюты",
+    "type": "coins",
+    "priceUah": 1200,
+    "priceUsdt": 1200,
+    "rarity": "legendary",
+    "category": "currency",
+    "sortOrder": 50,
+    "giftable": false,
+    "limited": false,
+    "assets": {
+      "icon": "shop/currency/coins_1000.png"
+    },
+    "metadata": {
+      "coinAmount": 1000
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "premium_30": {
+    "name": "FL Premium · 30 дней",
+    "description": "Подписка FL Premium на 30 дней",
+    "type": "premium",
+    "priceUah": 199,
+    "priceUsdt": 199,
+    "priceCoins": 199,
+    "rarity": "epic",
+    "category": "premium",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/premium/premium_30.png"
+    },
+    "metadata": {
+      "days": 30
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "premium_90": {
+    "name": "FL Premium · 90 дней",
+    "description": "Подписка FL Premium на 90 дней",
+    "type": "premium",
+    "priceUah": 499,
+    "priceUsdt": 499,
+    "priceCoins": 499,
+    "rarity": "epic",
+    "category": "premium",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/premium/premium_90.png"
+    },
+    "metadata": {
+      "days": 90
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "premium_365": {
+    "name": "FL Premium · 365 дней",
+    "description": "Подписка FL Premium на 365 дней",
+    "type": "premium",
+    "priceUah": 1499,
+    "priceUsdt": 1499,
+    "priceCoins": 1499,
+    "rarity": "legendary",
+    "category": "premium",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/premium/premium_365.png"
+    },
+    "metadata": {
+      "days": 365
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "tag_custom": {
+    "name": "Уникальный тег",
+    "description": "Свой тег рядом с ником (3–16 символов)",
+    "type": "tag",
+    "priceUah": 99,
+    "priceUsdt": 99,
+    "priceCoins": 99,
+    "rarity": "rare",
+    "category": "tags",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/tags/tag_custom.png"
+    },
+    "metadata": {
+      "minLen": 3,
+      "maxLen": 16,
+      "regex": "^[A-Za-z0-9_]{3,16}$",
+      "uniqueGlobal": true
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "tag_short": {
+    "name": "Короткий тег",
+    "description": "Короткий уникальный тег",
+    "type": "tag",
+    "priceUah": 299,
+    "priceUsdt": 299,
+    "priceCoins": 299,
+    "rarity": "epic",
+    "category": "tags",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/tags/tag_short.png"
+    },
+    "metadata": {
+      "minLen": 3,
+      "maxLen": 5,
+      "regex": "^[A-Za-z0-9_]{3,5}$",
+      "uniqueGlobal": true
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "tag_colored": {
+    "name": "Цветной тег",
+    "description": "Тег с цветовым акцентом",
+    "type": "tag",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "rare",
+    "category": "tags",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/tags/tag_colored.png"
+    },
+    "metadata": {
+      "minLen": 3,
+      "maxLen": 16,
+      "regex": "^[A-Za-z0-9_]{3,16}$",
+      "uniqueGlobal": true,
+      "style": "colored"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "tag_animated": {
+    "name": "Анимированный тег",
+    "description": "Тег с анимацией в интерфейсе лаунчера",
+    "type": "tag",
+    "priceUah": 249,
+    "priceUsdt": 249,
+    "priceCoins": 249,
+    "rarity": "epic",
+    "category": "tags",
+    "sortOrder": 40,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/tags/tag_animated.png"
+    },
+    "metadata": {
+      "minLen": 3,
+      "maxLen": 16,
+      "regex": "^[A-Za-z0-9_]{3,16}$",
+      "uniqueGlobal": true,
+      "style": "animated"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "cape_fl_classic": {
+    "name": "Классический плащ FL",
+    "description": "Косметика профиля внутри лаунчера",
+    "type": "cape",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "rare",
+    "category": "capes",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/capes/cape_fl_classic.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "cape_fox_tail": {
+    "name": "Лисий хвост",
+    "description": "Косметика профиля внутри лаунчера",
+    "type": "cape",
+    "priceUah": 199,
+    "priceUsdt": 199,
+    "priceCoins": 199,
+    "rarity": "rare",
+    "category": "capes",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/capes/cape_fox_tail.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "cape_emerald_wings": {
+    "name": "Изумрудные крылья",
+    "description": "Косметика профиля внутри лаунчера",
+    "type": "cape",
+    "priceUah": 299,
+    "priceUsdt": 299,
+    "priceCoins": 299,
+    "rarity": "epic",
+    "category": "capes",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/capes/cape_emerald_wings.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "cape_void": {
+    "name": "Бездна",
+    "description": "Косметика профиля внутри лаунчера",
+    "type": "cape",
+    "priceUah": 349,
+    "priceUsdt": 349,
+    "priceCoins": 349,
+    "rarity": "epic",
+    "category": "capes",
+    "sortOrder": 40,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/capes/cape_void.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "cape_aurora": {
+    "name": "Северное сияние",
+    "description": "Косметика профиля внутри лаунчера",
+    "type": "cape",
+    "priceUah": 399,
+    "priceUsdt": 399,
+    "priceCoins": 399,
+    "rarity": "epic",
+    "category": "capes",
+    "sortOrder": 50,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/capes/cape_aurora.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "cape_dragon": {
+    "name": "Плащ дракона",
+    "description": "Косметика профиля внутри лаунчера",
+    "type": "cape",
+    "priceUah": 599,
+    "priceUsdt": 599,
+    "priceCoins": 599,
+    "rarity": "legendary",
+    "category": "capes",
+    "sortOrder": 60,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/capes/cape_dragon.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "cape_golden_legend": {
+    "name": "Золотая легенда",
+    "description": "Косметика профиля внутри лаунчера",
+    "type": "cape",
+    "priceUah": 799,
+    "priceUsdt": 799,
+    "priceCoins": 799,
+    "rarity": "legendary",
+    "category": "capes",
+    "sortOrder": 70,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/capes/cape_golden_legend.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "cape_halloween_2026": {
+    "name": "Хэллоуин 2026",
+    "description": "Сезонная косметика профиля",
+    "type": "cape",
+    "priceUah": 199,
+    "priceUsdt": 199,
+    "priceCoins": 199,
+    "rarity": "rare",
+    "category": "capes",
+    "sortOrder": 80,
+    "giftable": true,
+    "limited": true,
+    "assets": {
+      "icon": "shop/capes/cape_halloween_2026.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "cape_winter_2026": {
+    "name": "Зимний плащ 2026",
+    "description": "Сезонная косметика профиля",
+    "type": "cape",
+    "priceUah": 199,
+    "priceUsdt": 199,
+    "priceCoins": 199,
+    "rarity": "rare",
+    "category": "capes",
+    "sortOrder": 90,
+    "giftable": true,
+    "limited": true,
+    "assets": {
+      "icon": "shop/capes/cape_winter_2026.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "frame_fl_emerald": {
+    "name": "FL Изумруд",
+    "description": "Рамка аватара в интерфейсе лаунчера",
+    "type": "frame",
+    "priceUah": 99,
+    "priceUsdt": 99,
+    "priceCoins": 99,
+    "rarity": "rare",
+    "category": "frames",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/frames/frame_fl_emerald.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "frame_fl_neon": {
+    "name": "FL Неон",
+    "description": "Рамка аватара в интерфейсе лаунчера",
+    "type": "frame",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "rare",
+    "category": "frames",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/frames/frame_fl_neon.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "frame_fl_gold": {
+    "name": "FL Золото",
+    "description": "Рамка аватара в интерфейсе лаунчера",
+    "type": "frame",
+    "priceUah": 199,
+    "priceUsdt": 199,
+    "priceCoins": 199,
+    "rarity": "epic",
+    "category": "frames",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/frames/frame_fl_gold.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "frame_fl_diamond": {
+    "name": "FL Алмаз",
+    "description": "Рамка аватара в интерфейсе лаунчера",
+    "type": "frame",
+    "priceUah": 299,
+    "priceUsdt": 299,
+    "priceCoins": 299,
+    "rarity": "epic",
+    "category": "frames",
+    "sortOrder": 40,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/frames/frame_fl_diamond.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "frame_fl_fire": {
+    "name": "FL Огонь",
+    "description": "Рамка аватара в интерфейсе лаунчера",
+    "type": "frame",
+    "priceUah": 349,
+    "priceUsdt": 349,
+    "priceCoins": 349,
+    "rarity": "epic",
+    "category": "frames",
+    "sortOrder": 50,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/frames/frame_fl_fire.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "frame_fl_rainbow": {
+    "name": "FL Радуга",
+    "description": "Рамка аватара в интерфейсе лаунчера",
+    "type": "frame",
+    "priceUah": 399,
+    "priceUsdt": 399,
+    "priceCoins": 399,
+    "rarity": "legendary",
+    "category": "frames",
+    "sortOrder": 60,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/frames/frame_fl_rainbow.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "frame_fl_premium": {
+    "name": "FL Premium",
+    "description": "Премиальная рамка профиля",
+    "type": "frame",
+    "priceUah": 499,
+    "priceUsdt": 499,
+    "priceCoins": 499,
+    "rarity": "legendary",
+    "category": "frames",
+    "sortOrder": 70,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/frames/frame_fl_premium.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "frame_halloween_2026": {
+    "name": "Хэллоуин 2026",
+    "description": "Сезонная рамка профиля",
+    "type": "frame",
+    "priceUah": 249,
+    "priceUsdt": 249,
+    "priceCoins": 249,
+    "rarity": "epic",
+    "category": "frames",
+    "sortOrder": 80,
+    "giftable": true,
+    "limited": true,
+    "assets": {
+      "icon": "shop/frames/frame_halloween_2026.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "frame_winter_2026": {
+    "name": "Зима 2026",
+    "description": "Сезонная рамка профиля",
+    "type": "frame",
+    "priceUah": 249,
+    "priceUsdt": 249,
+    "priceCoins": 249,
+    "rarity": "epic",
+    "category": "frames",
+    "sortOrder": 90,
+    "giftable": true,
+    "limited": true,
+    "assets": {
+      "icon": "shop/frames/frame_winter_2026.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "nick_emerald": {
+    "name": "Изумрудный ник",
+    "description": "Цвет ника в интерфейсе лаунчера",
+    "type": "nick_color",
+    "priceUah": 79,
+    "priceUsdt": 79,
+    "priceCoins": 79,
+    "rarity": "common",
+    "category": "nick",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/nick/nick_emerald.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "nick_fire": {
+    "name": "Огненный ник",
+    "description": "Цвет ника в интерфейсе лаунчера",
+    "type": "nick_color",
+    "priceUah": 99,
+    "priceUsdt": 99,
+    "priceCoins": 99,
+    "rarity": "rare",
+    "category": "nick",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/nick/nick_fire.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "nick_ice": {
+    "name": "Ледяной ник",
+    "description": "Цвет ника в интерфейсе лаунчера",
+    "type": "nick_color",
+    "priceUah": 99,
+    "priceUsdt": 99,
+    "priceCoins": 99,
+    "rarity": "rare",
+    "category": "nick",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/nick/nick_ice.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "nick_rainbow": {
+    "name": "Радужный ник",
+    "description": "Цвет ника в интерфейсе лаунчера",
+    "type": "nick_color",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "epic",
+    "category": "nick",
+    "sortOrder": 40,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/nick/nick_rainbow.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "effect_pulse": {
+    "name": "Пульс ника",
+    "description": "Анимация имени в интерфейсе лаунчера",
+    "type": "nick_effect",
+    "priceUah": 129,
+    "priceUsdt": 129,
+    "priceCoins": 129,
+    "rarity": "rare",
+    "category": "nick",
+    "sortOrder": 50,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/nick/effect_pulse.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "effect_glow": {
+    "name": "Свечение ника",
+    "description": "Эффект имени в интерфейсе лаунчера",
+    "type": "nick_effect",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "rare",
+    "category": "nick",
+    "sortOrder": 60,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/nick/effect_glow.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "effect_sparkle": {
+    "name": "Искры ника",
+    "description": "Эффект имени в интерфейсе лаунчера",
+    "type": "nick_effect",
+    "priceUah": 199,
+    "priceUsdt": 199,
+    "priceCoins": 199,
+    "rarity": "epic",
+    "category": "nick",
+    "sortOrder": 70,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/nick/effect_sparkle.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "badge_fox": {
+    "name": "Значок Лис",
+    "description": "Значок профиля в лаунчере",
+    "type": "badge",
+    "priceUah": 79,
+    "priceUsdt": 79,
+    "priceCoins": 79,
+    "rarity": "common",
+    "category": "badges",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/badges/badge_fox.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "badge_builder": {
+    "name": "Значок Строитель",
+    "description": "Значок профиля в лаунчере",
+    "type": "badge",
+    "priceUah": 79,
+    "priceUsdt": 79,
+    "priceCoins": 79,
+    "rarity": "common",
+    "category": "badges",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/badges/badge_builder.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "badge_pvp": {
+    "name": "Значок PvP",
+    "description": "Значок профиля в лаунчере",
+    "type": "badge",
+    "priceUah": 79,
+    "priceUsdt": 79,
+    "priceCoins": 79,
+    "rarity": "common",
+    "category": "badges",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/badges/badge_pvp.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "badge_creator": {
+    "name": "Значок Создатель",
+    "description": "Значок профиля в лаунчере",
+    "type": "badge",
+    "priceUah": 199,
+    "priceUsdt": 199,
+    "priceCoins": 199,
+    "rarity": "epic",
+    "category": "badges",
+    "sortOrder": 40,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/badges/badge_creator.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "badge_early_supporter": {
+    "name": "Ранний сторонник",
+    "description": "Лимитированный значок профиля",
+    "type": "badge",
+    "priceUah": 99,
+    "priceUsdt": 99,
+    "priceCoins": 99,
+    "rarity": "epic",
+    "category": "badges",
+    "sortOrder": 50,
+    "giftable": false,
+    "limited": true,
+    "stock": 500,
+    "assets": {
+      "icon": "shop/badges/badge_early_supporter.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "badge_halloween_2026": {
+    "name": "Значок Хэллоуин 2026",
+    "description": "Сезонный значок профиля",
+    "type": "badge",
+    "priceUah": 79,
+    "priceUsdt": 79,
+    "priceCoins": 79,
+    "rarity": "rare",
+    "category": "badges",
+    "sortOrder": 60,
+    "giftable": true,
+    "limited": true,
+    "assets": {
+      "icon": "shop/badges/badge_halloween_2026.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "badge_winter_2026": {
+    "name": "Значок Зима 2026",
+    "description": "Сезонный значок профиля",
+    "type": "badge",
+    "priceUah": 79,
+    "priceUsdt": 79,
+    "priceCoins": 79,
+    "rarity": "rare",
+    "category": "badges",
+    "sortOrder": 70,
+    "giftable": true,
+    "limited": true,
+    "assets": {
+      "icon": "shop/badges/badge_winter_2026.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "banner_forest": {
+    "name": "Баннер Лес",
+    "description": "Баннер профиля в лаунчере",
+    "type": "banner",
+    "priceUah": 99,
+    "priceUsdt": 99,
+    "priceCoins": 99,
+    "rarity": "rare",
+    "category": "banners",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/banners/banner_forest.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "banner_castle": {
+    "name": "Баннер Замок",
+    "description": "Баннер профиля в лаунчере",
+    "type": "banner",
+    "priceUah": 99,
+    "priceUsdt": 99,
+    "priceCoins": 99,
+    "rarity": "rare",
+    "category": "banners",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/banners/banner_castle.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "banner_neon_city": {
+    "name": "Баннер Неон-город",
+    "description": "Баннер профиля в лаунчере",
+    "type": "banner",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "epic",
+    "category": "banners",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/banners/banner_neon_city.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "banner_aurora": {
+    "name": "Баннер Сияние",
+    "description": "Баннер профиля в лаунчере",
+    "type": "banner",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "epic",
+    "category": "banners",
+    "sortOrder": 40,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/banners/banner_aurora.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "theme_amber": {
+    "name": "Тема Янтарь",
+    "description": "Цветовая тема интерфейса лаунчера",
+    "type": "theme",
+    "priceUah": 99,
+    "priceUsdt": 99,
+    "priceCoins": 99,
+    "rarity": "rare",
+    "category": "themes",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/themes/theme_amber.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "theme_sakura": {
+    "name": "Тема Сакура",
+    "description": "Цветовая тема интерфейса лаунчера",
+    "type": "theme",
+    "priceUah": 129,
+    "priceUsdt": 129,
+    "priceCoins": 129,
+    "rarity": "rare",
+    "category": "themes",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/themes/theme_sakura.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "theme_cyber": {
+    "name": "Тема Кибер",
+    "description": "Цветовая тема интерфейса лаунчера",
+    "type": "theme",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "epic",
+    "category": "themes",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/themes/theme_cyber.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "theme_midnight": {
+    "name": "Тема Полночь",
+    "description": "Цветовая тема интерфейса лаунчера",
+    "type": "theme",
+    "priceUah": 99,
+    "priceUsdt": 99,
+    "priceCoins": 99,
+    "rarity": "rare",
+    "category": "themes",
+    "sortOrder": 40,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/themes/theme_midnight.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "emoji_fox": {
+    "name": "Эмодзи Лис",
+    "description": "Набор эмодзи для общения в лаунчере",
+    "type": "emoji_pack",
+    "priceUah": 79,
+    "priceUsdt": 79,
+    "priceCoins": 79,
+    "rarity": "common",
+    "category": "emoji",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/emoji/emoji_fox.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "case_basic": {
+    "name": "Обычный кейс",
+    "description": "Случайная косметика и FL Coins",
+    "type": "case",
+    "priceUah": 50,
+    "priceUsdt": 50,
+    "priceCoins": 50,
+    "rarity": "common",
+    "category": "cases",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/cases/case_basic.png",
+      "iconOpen": "shop/cases/case_basic_open.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "case_rare": {
+    "name": "Редкий кейс",
+    "description": "Случайная косметика и FL Coins",
+    "type": "case",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "rare",
+    "category": "cases",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/cases/case_rare.png",
+      "iconOpen": "shop/cases/case_rare_open.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "case_epic": {
+    "name": "Эпический кейс",
+    "description": "Случайная косметика и FL Coins",
+    "type": "case",
+    "priceUah": 299,
+    "priceUsdt": 299,
+    "priceCoins": 299,
+    "rarity": "epic",
+    "category": "cases",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/cases/case_epic.png",
+      "iconOpen": "shop/cases/case_epic_open.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "case_legendary": {
+    "name": "Легендарный кейс",
+    "description": "Случайная косметика и FL Coins",
+    "type": "case",
+    "priceUah": 599,
+    "priceUsdt": 599,
+    "priceCoins": 599,
+    "rarity": "legendary",
+    "category": "cases",
+    "sortOrder": 40,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/cases/case_legendary.png",
+      "iconOpen": "shop/cases/case_legendary_open.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "case_cape": {
+    "name": "Кейс плащей",
+    "description": "Кейс с косметикой категории плащей",
+    "type": "case",
+    "priceUah": 349,
+    "priceUsdt": 349,
+    "priceCoins": 349,
+    "rarity": "epic",
+    "category": "cases",
+    "sortOrder": 50,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/cases/case_cape.png",
+      "iconOpen": "shop/cases/case_cape_open.png"
+    },
+    "metadata": {
+      "only": "cape"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "case_frame": {
+    "name": "Кейс рамок",
+    "description": "Кейс с косметикой категории рамок",
+    "type": "case",
+    "priceUah": 249,
+    "priceUsdt": 249,
+    "priceCoins": 249,
+    "rarity": "rare",
+    "category": "cases",
+    "sortOrder": 60,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/cases/case_frame.png",
+      "iconOpen": "shop/cases/case_frame_open.png"
+    },
+    "metadata": {
+      "only": "frame"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "case_halloween_2026": {
+    "name": "Кейс Хэллоуин 2026",
+    "description": "Сезонный кейс",
+    "type": "case",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "epic",
+    "category": "cases",
+    "sortOrder": 70,
+    "giftable": true,
+    "limited": true,
+    "assets": {
+      "icon": "shop/cases/case_halloween_2026.png",
+      "iconOpen": "shop/cases/case_halloween_2026_open.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "case_winter_2026": {
+    "name": "Кейс Зима 2026",
+    "description": "Сезонный кейс",
+    "type": "case",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "epic",
+    "category": "cases",
+    "sortOrder": 80,
+    "giftable": true,
+    "limited": true,
+    "assets": {
+      "icon": "shop/cases/case_winter_2026.png",
+      "iconOpen": "shop/cases/case_winter_2026_open.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "case_pack_5": {
+    "name": "5 обычных кейсов",
+    "description": "Набор из пяти обычных кейсов",
+    "type": "bundle",
+    "priceUah": 199,
+    "priceUsdt": 199,
+    "priceCoins": 199,
+    "rarity": "rare",
+    "category": "bundles",
+    "sortOrder": 90,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/cases/case_pack_5.png"
+    },
+    "metadata": {
+      "grants": [
+        {
+          "itemId": "case_basic",
+          "quantity": 5
+        }
+      ]
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "gift_premium_30": {
+    "name": "Подарок: FL Premium 30 дней",
+    "description": "Подарочный сертификат Premium",
+    "type": "gift",
+    "priceUah": 199,
+    "priceUsdt": 199,
+    "priceCoins": 199,
+    "rarity": "epic",
+    "category": "gifts",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/gifts/gift_premium_30.png"
+    },
+    "metadata": {
+      "grants": [
+        {
+          "itemId": "premium_30",
+          "quantity": 1
+        }
+      ]
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "gift_coins_100": {
+    "name": "Подарок: 100 FL Coins",
+    "description": "Подарочный пакет монет",
+    "type": "gift",
+    "priceUah": 100,
+    "priceUsdt": 100,
+    "priceCoins": 100,
+    "rarity": "common",
+    "category": "gifts",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/gifts/gift_coins_100.png"
+    },
+    "metadata": {
+      "grantsCoins": 100
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "gift_coins_500": {
+    "name": "Подарок: 500 FL Coins",
+    "description": "Подарочный пакет монет",
+    "type": "gift",
+    "priceUah": 500,
+    "priceUsdt": 500,
+    "priceCoins": 500,
+    "rarity": "epic",
+    "category": "gifts",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/gifts/gift_coins_500.png"
+    },
+    "metadata": {
+      "grantsCoins": 500
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "gift_box_surprise": {
+    "name": "Подарочная коробка",
+    "description": "Подарок для другого игрока",
+    "type": "gift",
+    "priceUah": 149,
+    "priceUsdt": 149,
+    "priceCoins": 149,
+    "rarity": "rare",
+    "category": "gifts",
+    "sortOrder": 40,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/gifts/gift_box_surprise.png",
+      "iconOpen": "shop/gifts/gift_box_surprise_open.png"
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "bundle_starter": {
+    "name": "Стартовый набор",
+    "description": "Подборка косметики для нового профиля",
+    "type": "bundle",
+    "priceUah": 249,
+    "priceUsdt": 249,
+    "priceCoins": 249,
+    "rarity": "rare",
+    "category": "bundles",
+    "sortOrder": 10,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/bundles/bundle_starter.png"
+    },
+    "metadata": {
+      "includes": [
+        "frame_fl_emerald",
+        "nick_emerald",
+        "badge_fox"
+      ]
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "bundle_fox": {
+    "name": "Лисий набор",
+    "description": "Косметика в стиле FL",
+    "type": "bundle",
+    "priceUah": 399,
+    "priceUsdt": 399,
+    "priceCoins": 399,
+    "rarity": "epic",
+    "category": "bundles",
+    "sortOrder": 20,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/bundles/bundle_fox.png"
+    },
+    "metadata": {
+      "includes": [
+        "cape_fox_tail",
+        "badge_fox",
+        "emoji_fox"
+      ]
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "bundle_legend": {
+    "name": "Набор Легенда",
+    "description": "Легендарная косметика для интерфейса лаунчера",
+    "type": "bundle",
+    "priceUah": 1199,
+    "priceUsdt": 1199,
+    "priceCoins": 1199,
+    "rarity": "legendary",
+    "category": "bundles",
+    "sortOrder": 30,
+    "giftable": true,
+    "limited": false,
+    "assets": {
+      "icon": "shop/bundles/bundle_legend.png"
+    },
+    "metadata": {
+      "includes": [
+        "frame_fl_rainbow",
+        "cape_golden_legend",
+        "nick_rainbow",
+        "badge_creator"
+      ]
+    },
+    "enabled": true,
+    "schemaVersion": 1,
+    "createdAt": 0,
+    "updatedAt": 0
+  }
+}
